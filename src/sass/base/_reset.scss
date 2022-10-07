@@ -1,0 +1,23 @@
+//Margin reset
+h1,
+h2,
+h3,
+ul,
+p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+// img reset
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0px;
+}
+
+// list reset
+ul {
+  list-style: none;
+  padding: 0px;
+}
