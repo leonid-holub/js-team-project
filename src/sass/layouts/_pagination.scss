@@ -1,0 +1,26 @@
+.pagination {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.pagination-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $main-font;
+  font-size: 16px;
+  line-height: calc(20 / 16);
+  text-decoration: none;
+  color: #ffffff;
+  background-color: transparent;
+}
+
+.pagination-btn.is-active {
+  width: 30px;
+  height: 30px;
+  color: $accent-txt-color;
+  border: 1px solid $accent-txt-color;
+  border-radius: 10px 0px;
+}
