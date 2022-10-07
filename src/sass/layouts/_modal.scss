@@ -5,7 +5,8 @@
 }
 
 .backdrop {
-    position: fixed;
+    position: relative;
+    // position: fixed;
     top: 0;
     left: 0;
 
@@ -18,10 +19,11 @@
 
 .modal {
     position: absolute;
+    left: 25%;
 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
 
     @media screen and (max-width: 767px) {
         padding-left: 25px;
@@ -64,6 +66,8 @@
     position: absolute;
     top: 24px;
     right: 24px;
+
+    padding: 0;
     
     display: inline-flex;
     justify-content: center;
@@ -85,12 +89,17 @@
     }
     
     cursor: pointer;
-    background-color: black;
-    border: 1px solid transparent;
-    
+    background-color: transparent;
+    color: $modal-accent-color;
+    border: none;
+}
+
+.modal-btn__close-icon {
+    fill: currentColor;
+
     &:hover,
     &:focus {
-        background-color: white;
+        fill: $accent-txt-color;
     }
 }
 
@@ -99,7 +108,7 @@
     margin-left: auto;
 
     border-radius: 50%;
-    background-color: black;
+    background-color: $modal-accent-color;
 
     margin-bottom: 20px;
     width: 102px;
@@ -120,7 +129,7 @@
 .modal__img-l {
     float: left;
     margin-right: 32px;
-    background-color: black;
+    background-color: $modal-accent-color;
     @media screen and (max-width: 767px) {
         display: none;
     }
@@ -148,7 +157,7 @@
     line-height: 1.2;
     text-transform: uppercase;
 
-    color: #DC56C5;
+    color: $accent-txt-color;
 
     @media screen and (min-width: 1280px) {
         margin-bottom: 7px;
@@ -197,24 +206,36 @@
     line-height: 1.25;
     text-transform: uppercase;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .modal__link-buy {
+    display: inline-block;
     margin-top: 20px;
     padding: 9px 19px 11px;
-    color: #FFFFFF;
-    background-color: #4C00FE;
+    color: $main-text-color;
+    background-color: $modal-accent-color;
     border: none;
+
+    &:hover,
+    &:focus {
+        background-color: #2E009A;
+    }
 }
 
 .modal__btn-more {
     padding: 10px 15px;
     margin: 0 auto;
-    color: #4C00FE;
+    color: $modal-accent-color;
     background-color: transparent;
-    border: 1px solid #4C00FE;
+    border: 1px solid $modal-accent-color;
     
     @media screen and (max-width: 767px) {
         padding: 10px 3px;
+    }
+
+    &:hover,
+    &:focus {
+        border-color: $accent-txt-color;
     }
 }
