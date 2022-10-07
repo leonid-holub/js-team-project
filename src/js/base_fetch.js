@@ -7,7 +7,6 @@ const config = {
     classificationName: 'music',
     size: 16,
     page: 0,
-    name: newName,
   },
 };
 
@@ -17,6 +16,7 @@ async function baseFetch() {
       `https://app.ticketmaster.com/discovery/v2/events.json?`,
       config
     );
+    console.log(response);
     console.log(response.data._embedded.events);
   } catch {
     error => {
