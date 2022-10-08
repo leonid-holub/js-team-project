@@ -1,5 +1,5 @@
 import { FetchService } from './base_fetch';
-import { getStartPageMarkup, TEST } from './start_page-render';
+import { getStartPageMarkup } from './start_page-render';
 
 import debounce from 'lodash.debounce';
 

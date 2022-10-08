@@ -32,7 +32,6 @@ function openModal(ev) {
 
   function onCardModalOpen(ev) {
     refs.modal.classList.remove('is-hidden');
-    console.log(ev.target.textContent);
   }
 
   /////////////////////////////////////////

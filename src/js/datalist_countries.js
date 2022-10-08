@@ -11,5 +11,3 @@ const defaultCountryDataList = function () {
   });
 };
 defaultCountryDataList();
-
-console.log(queryCountry);

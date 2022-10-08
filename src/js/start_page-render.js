@@ -41,5 +41,3 @@ export function getStartPageMarkup(events) {
 
   refs.cardList.insertAdjacentHTML('afterbegin', markup);
 }
-
-export const TEST = 'test';
