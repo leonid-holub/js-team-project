@@ -5,8 +5,8 @@
 }
 
 .backdrop {
-    position: relative;
-    // position: fixed;
+    // position: relative;
+    position: fixed;
     top: 0;
     left: 0;
 
@@ -19,11 +19,11 @@
 
 .modal {
     position: absolute;
-    left: 25%;
+    // left: 25%;
 
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
 
     @media screen and (max-width: 767px) {
         padding-left: 25px;
@@ -57,8 +57,12 @@
     background-color: #FFF2FD;
     border-radius: 300px 0px;
 
+    transition: transform $anim,
+    opacity $anim;
+
     .is-hidden & {
         opacity: 0;
+        transform: translate(-50%, -50%) scale(0.85);
     }
 }
 
@@ -96,6 +100,7 @@
 
 .modal-btn__close-icon {
     fill: currentColor;
+    transition: fill $anim;
 
     &:hover,
     &:focus {
@@ -104,6 +109,8 @@
 }
 
 .modal__img-s {
+    // object-fit: cover;
+
     margin-right: auto;
     margin-left: auto;
 
@@ -127,6 +134,8 @@
 }
 
 .modal__img-l {
+    // object-fit: cover;
+
     float: left;
     margin-right: 32px;
     background-color: $modal-accent-color;
@@ -178,6 +187,16 @@
     }
 }
 
+.modal__prices {
+    @media screen and (max-width: 767px) {
+        text-align: center;
+    }
+    @media screen and (min-width: 768px) {
+        display: flex;
+        gap: 60;
+    }
+}
+
 .modal__prices-block {
     margin-bottom: 60px;
     @media screen and (max-width: 767px) {
@@ -211,11 +230,16 @@
 
 .modal__link-buy {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 16px;
     padding: 9px 19px 11px;
     color: $main-text-color;
     background-color: $modal-accent-color;
     border: none;
+    transition: border-color $anim;
+
+    @media screen and (min-width: 1280px) {
+        margin-top: 20px;
+    }
 
     &:hover,
     &:focus {
@@ -233,6 +257,8 @@
     @media screen and (max-width: 767px) {
         padding: 10px 3px;
     }
+
+    transition: border-color $anim;
 
     &:hover,
     &:focus {
