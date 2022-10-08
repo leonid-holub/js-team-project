@@ -1,6 +1,9 @@
 .footer {
   background-color: transparent;
-  padding: 60px 0;
+  margin-top: -140px;
+
+  //видалити після скриття модалки
+  margin-bottom: 60px;
 
   &__text {
     color: $copyright-txt-color;

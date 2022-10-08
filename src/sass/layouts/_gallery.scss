@@ -1,16 +1,16 @@
 .gallery {
+  padding-top: 20px;
+
   background-color: $section-bckg-color;
 
   background-image: url(../images/icons/gallery-img/noise-body.svg);
   background-size: auto;
   background-position: center;
-
-  // margin-top: -76px;
 }
 
 .cards {
   margin-bottom: 60px;
-
+  padding-bottom: 160px;
   background-image: url(../images/icons/gallery-img/bgc-body.svg);
   background-size: cover;
   background-position: center;
@@ -19,6 +19,7 @@
 .cards__list {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 60px;
 
   row-gap: 41px;
   column-gap: 20px;

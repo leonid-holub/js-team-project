@@ -1,28 +1,34 @@
 import axios from 'axios';
 import { API_KEY } from './api_key';
 
-const config = {
-  params: {
-    apikey: API_KEY,
-    classificationName: 'music',
-    size: 16,
-    page: 0,
-  },
-};
+export class FetchService {
+  constructor() {}
 
-async function baseFetch() {
-  try {
-    const response = await axios.get(
-      `https://app.ticketmaster.com/discovery/v2/events.json?`,
-      config
-    );
-    console.log(response);
-    console.log(response.data._embedded.events);
-  } catch {
-    error => {
-      console.log(error);
-    };
-  }
+  BASE_URL = `https://app.ticketmaster.com/discovery/v2/events.json?`;
+
+  config = {
+    params: {
+      apikey: API_KEY,
+      classificationName: 'music',
+      size: 16,
+      page: 0,
+    },
+  };
+
+  baseFetch = async function () {
+    try {
+      const response = await axios.get(this.BASE_URL, this.config);
+      console.log(response);
+      console.log(response.data._embedded.events);
+      return response.data;
+    } catch {
+      error => {
+        console.log(error);
+      };
+    }
+  };
 }
 
-baseFetch();
+const fetchService = new FetchService();
+
+fetchService.baseFetch();
