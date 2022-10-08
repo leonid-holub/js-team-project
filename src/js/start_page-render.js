@@ -17,7 +17,6 @@ function startPageMarkup() {
 export function getStartPageMarkup(events) {
   const markup = events
     .map(event => {
-      console.log(event._embedded.venues[0]);
       return `
       
     <li class="cards__item">
