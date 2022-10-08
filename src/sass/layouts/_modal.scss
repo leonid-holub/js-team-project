@@ -5,11 +5,10 @@
 }
 
 .backdrop {
-   // position: relative;
-    position: fixed;
-    top: 0;
-    left: 0;
-
+  // position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
 
   width: 100%;
   height: 100%;
@@ -19,52 +18,51 @@
 }
 
 .modal {
-    position: absolute;
-    // left: 25%;
+  position: absolute;
+  // left: 25%;
 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
 
-    @media screen and (max-width: 767px) {
-        padding-left: 25px;
-        padding-right: 25px;
-        padding-top: 54px;
-        padding-bottom: 54px;
-        min-width: 280px;
-        min-height: 952px;
-        text-align: center;
-        border-radius: 150px 0px;
-    }
-    
-    @media screen and (min-width: 768px) {
-        padding-left: 87px;
-        padding-right: 50px;
-        padding-top: 80px;
-        padding-bottom: 100px;
-        width: 704px;
-        min-height: 780px;
-    }
-    
-    @media screen and (min-width: 1280px) {
-        padding-left: 74px;
-        padding-right: 74px;
-        padding-top: 54px;
-        padding-bottom: 54px;
-        width: 1034px;
-        min-height: 918px;
-    }
+  @media screen and (max-width: 767px) {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 54px;
+    padding-bottom: 54px;
+    min-width: 280px;
+    min-height: 952px;
+    text-align: center;
+    border-radius: 150px 0px;
+  }
 
-    background-color: #FFF2FD;
-    border-radius: 300px 0px;
+  @media screen and (min-width: 768px) {
+    padding-left: 87px;
+    padding-right: 50px;
+    padding-top: 80px;
+    padding-bottom: 100px;
+    width: 704px;
+    min-height: 780px;
+  }
 
-    transition: transform $anim,
-    opacity $anim;
+  @media screen and (min-width: 1280px) {
+    padding-left: 74px;
+    padding-right: 74px;
+    padding-top: 54px;
+    padding-bottom: 54px;
+    width: 1034px;
+    min-height: 918px;
+  }
 
-    .is-hidden & {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.85);
-    }
+  background-color: #fff2fd;
+  border-radius: 300px 0px;
+
+  transition: transform $anim, opacity $anim;
+
+  .is-hidden & {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
 }
 
 .modal-btn__close {
@@ -100,8 +98,8 @@
 }
 
 .modal-btn__close-icon {
-    fill: currentColor;
-    transition: fill $anim;
+  fill: currentColor;
+  transition: fill $anim;
 
   &:hover,
   &:focus {
@@ -110,49 +108,49 @@
 }
 
 .modal__img-s {
-    // object-fit: cover;
+  // object-fit: cover;
 
-    margin-right: auto;
-    margin-left: auto;
+  margin-right: auto;
+  margin-left: auto;
 
-    border-radius: 50%;
-    background-color: $modal-accent-color;
+  border-radius: 50%;
+  background-color: $modal-accent-color;
 
-    margin-bottom: 20px;
-    width: 102px;
-    height: 102px;
-    
-    @media screen and (min-width: 768px) {
-        margin-bottom: 40px;
-        width: 70px;
-        height: 70px;
-    }
-    
-    @media screen and (min-width: 1280px) {
-        width: 132px;
-        height: 132px;
-    }
+  margin-bottom: 20px;
+  width: 102px;
+  height: 102px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
+    width: 70px;
+    height: 70px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 132px;
+    height: 132px;
+  }
 }
 
 .modal__img-l {
-    // object-fit: cover;
+  // object-fit: cover;
 
-    float: left;
-    margin-right: 32px;
-    background-color: $modal-accent-color;
-    @media screen and (max-width: 767px) {
-        display: none;
-    }
-    
-    @media screen and (min-width: 768px) {
-        width: 250px;
-        height: 218px;
-    }
-    
-    @media screen and (min-width: 1280px) {
-        width: 427px;
-        height: 326px;
-    }
+  float: left;
+  margin-right: 32px;
+  background-color: $modal-accent-color;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 250px;
+    height: 218px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 427px;
+    height: 326px;
+  }
 
   margin-right: auto;
   margin-left: auto;
@@ -193,7 +191,6 @@
     width: 427px;
     height: 326px;
   }
-
 }
 
 .modal__text-block {
@@ -230,13 +227,13 @@
 }
 
 .modal__prices {
-    @media screen and (max-width: 767px) {
-        text-align: center;
-    }
-    @media screen and (min-width: 768px) {
-        display: flex;
-        gap: 60;
-    }
+  @media screen and (max-width: 767px) {
+    text-align: center;
+  }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    gap: 60;
+  }
 }
 
 .modal__prices-block {
@@ -271,49 +268,17 @@
 }
 
 .modal__link-buy {
-    display: inline-block;
-    margin-top: 16px;
-    padding: 9px 19px 11px;
-    color: $main-text-color;
-    background-color: $modal-accent-color;
-    border: none;
-    transition: border-color $anim;
-
-    @media screen and (min-width: 1280px) {
-        margin-top: 20px;
-    }
-
-    &:hover,
-    &:focus {
-        background-color: #2E009A;
-    }
-}
-
-.modal__btn-more {
-    padding: 10px 15px;
-    margin: 0 auto;
-    color: $modal-accent-color;
-    background-color: transparent;
-    border: 1px solid $modal-accent-color;
-    
-    @media screen and (max-width: 767px) {
-        padding: 10px 3px;
-    }
-
-    transition: border-color $anim;
-
-    &:hover,
-    &:focus {
-        border-color: $accent-txt-color;
-    }
-}
-=======
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 16px;
   padding: 9px 19px 11px;
   color: $main-text-color;
   background-color: $modal-accent-color;
   border: none;
+  transition: border-color $anim;
+
+  @media screen and (min-width: 1280px) {
+    margin-top: 20px;
+  }
 
   &:hover,
   &:focus {
@@ -331,6 +296,8 @@
   @media screen and (max-width: 767px) {
     padding: 10px 3px;
   }
+
+  transition: border-color $anim;
 
   &:hover,
   &:focus {
