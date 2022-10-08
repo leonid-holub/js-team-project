@@ -15,7 +15,7 @@ export default function updatePageBtn(page) {
       );
     } else if (i === 1) {
       btns.push(
-        `<li><button class="pagination-btn  is-active" href="#" type="button" btn-pagination>${page}</button></li>`
+        `<li><button class="pagination-btn  " href="#" type="button" btn-pagination>${page}</button></li>`
       );
     } else if (i === 2) {
       btns.push(
