@@ -17,7 +17,9 @@ function startPageMarkup() {
 function getStartPageMarkup(events) {
   const markup = events
     .map(event => {
+      console.log(event._embedded.venues[0]);
       return `
+      
     <li class="cards__item">
         <div class="cards__link" href="" data-modal-open>
         <img class="cards__img" src="${event.images[4].url}" alt="event-pictures" width="267px" height="220px"/> 
@@ -26,7 +28,7 @@ function getStartPageMarkup(events) {
         <p class="cards__date">
           <time datetime="${event.dates.start.dateTime}">${event.dates.start.localDate}</time>
         </p>
-        <a class="cards__address">
+        <a class="cards__address" href="#">
           <svg class="cards__icon-location" width="6" height="9">
             <use href="../images/icons/icons.svg"></use>
           </svg>
