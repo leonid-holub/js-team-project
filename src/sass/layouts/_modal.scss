@@ -5,7 +5,6 @@
 }
 
 .backdrop {
-  // position: relative;
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +18,6 @@
 
 .modal {
   position: absolute;
-  // left: 25%;
 
   top: 50%;
   left: 50%;
@@ -31,7 +29,7 @@
     padding-top: 54px;
     padding-bottom: 54px;
     min-width: 280px;
-    min-height: 952px;
+    height: 952px;
     text-align: center;
     border-radius: 150px 0px;
   }
@@ -42,7 +40,7 @@
     padding-top: 80px;
     padding-bottom: 100px;
     width: 704px;
-    min-height: 780px;
+    height: 780px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -51,7 +49,7 @@
     padding-top: 54px;
     padding-bottom: 54px;
     width: 1034px;
-    min-height: 918px;
+    height: 918px;
   }
 
   background-color: #fff2fd;
@@ -135,46 +133,6 @@
 .modal__img-l {
   // object-fit: cover;
 
-  float: left;
-  margin-right: 32px;
-  background-color: $modal-accent-color;
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 250px;
-    height: 218px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    width: 427px;
-    height: 326px;
-  }
-
-  margin-right: auto;
-  margin-left: auto;
-
-  border-radius: 50%;
-  background-color: $modal-accent-color;
-
-  margin-bottom: 20px;
-  width: 102px;
-  height: 102px;
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 40px;
-    width: 70px;
-    height: 70px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    width: 132px;
-    height: 132px;
-  }
-}
-
-.modal__img-l {
   float: left;
   margin-right: 32px;
   background-color: $modal-accent-color;

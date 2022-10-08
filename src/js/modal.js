@@ -1,12 +1,18 @@
-(() => {
-  const refs = {
+import { FetchService } from './base_fetch';
+
+const refs = {
+    gallery: document.querySelector('.cards__list'),
+    cards: document.querySelectorAll('.cards__link'),
     openModalBtns: document.querySelectorAll('[data-modal-open]'),
     closeModalBtn: document.querySelector('[data-modal-close]'),
     modal: document.querySelector('[data-modal]'),
     modalWindow: document.querySelector('.modal'),
-  };
-    refs.openModalBtns.forEach(btn => btn.addEventListener('click', toggleModal));
-    refs.closeModalBtn.addEventListener('click', toggleModal);
+};
+
+    refs.closeModalBtn.addEventListener('click', closeModalBtn);
+    function closeModalBtn() {
+        refs.modal.classList.add('is-hidden');
+    }
 
     refs.modal.addEventListener('click', closeModalBack);
     function closeModalBack(ev) {
@@ -17,8 +23,33 @@
         }
     }
 
-    function toggleModal() {
-        refs.modal.classList.toggle('is-hidden');
+refs.gallery.addEventListener('click', openModal)
+
+function openModal(ev) {
+    const cards = document.querySelectorAll('.cards__link');
+
+    cards.forEach(card => card.addEventListener('click', onCardModalOpen))
+
+    function onCardModalOpen(ev) {
+        refs.modal.classList.remove('is-hidden');
+        console.log(ev.target.textContent);
+    }
+
+        /////////////////////////////////////////
+        // console.log(ev.target.textContent);
+        
+
+        // const fetchInfo = new FetchService();
+        // fetchInfo.config.params.id = ev.target.textContent
+
+        // addInfo();
+
+        // function addInfo() {
+        //     fetchInfo.baseFetch().then(response => {
+        //       console.log(response);
+        //     // getStartPageMarkup(response);
+        //   });
+        // }
     }
 
     window.addEventListener('keydown', closeModalKey);
@@ -26,5 +57,5 @@
         if (ev.code === 'Escape') {
             refs.modal.classList.add('is-hidden')
         };
-    }
-})();
+};
+
