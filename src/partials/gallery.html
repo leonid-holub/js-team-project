@@ -1,20 +1,30 @@
 <section class="gallery">
-    <h2 class="visually-hidden">Gallery</h2>
-    <div class="cards container">
-        <ul class="cards__list">
-            <li class="cards__item">
-                <a class="cards__link" href="">
-                    <div class="cards__thumb"></div>
-                    <!-- <img class="cards__img" src="" alt=""> -->
-                    <h3 class="cards__title">Eurovision 2021 finals!</h3>
-                </a>
-                <p class="cards__date"><time datetime="2021-05-13">2021-05-13</time></p>
-                <a class="cards__address" href="">
-                    <svg class="cards__icon-location" width="6" height="9">
-                    <use href="./images/icons/icons.svg#icon-location"></use>
-                  </svg>
-                    <span>Palace of Ukraine</span></a>
-            </li>
-      </ul>
-    </div>
+  <h2 class="visually-hidden">Gallery</h2>
+  <div class="cards container">
+    <ul class="cards__list">
+      <li class="cards__item">
+        <div class="cards__link" href="" data-modal-open>
+          <div class="cards__thumb"></div>
+          <!-- <img class="cards__img" src="#" alt="#" /> -->
+          <h3 class="cards__title">Eurovision 2021 finals!</h3>
+        </div>
+        <p class="cards__date">
+          <time datetime="2021-05-13">2021-05-13</time>
+        </p>
+        <a class="cards__address" href="">
+          <svg class="cards__icon-location" width="6" height="9">
+            <use href="./images/icons/icons.svg#icon-location"></use>
+          </svg>
+          <span>Palace of Ukraine</span></a
+        >
+      </li>
+    </ul>
+    <ul class="pagination">
+      <li>
+        <button class="pagination-btn is-active" href="#" type="button">
+          1
+        </button>
+      </li>
+    </ul>
+  </div>
 </section>
