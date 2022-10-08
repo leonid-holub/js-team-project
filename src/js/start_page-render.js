@@ -18,7 +18,7 @@ function startPageMarkup() {
   });
 }
 
-function getStartPageMarkup(events) {
+export function getStartPageMarkup(events) {
   const markup = events
     .map(event => {
       return `
