@@ -1,3 +1,6 @@
+.bg-header {
+  background-color: $section-bckg-color;
+}
 .header-container {
   display: flex;
   flex-direction: column;
@@ -20,11 +23,13 @@
 
   &__title {
     text-align: center;
+    font-weight: 900;
 
     color: $accent-txt-color;
 
     @media screen and (max-width: 767px) {
       width: 280px;
+
       font-size: 18px;
       line-height: calc(22 / 18);
     }
@@ -48,6 +53,8 @@
   &__form {
     display: flex;
     @media screen and (max-width: 767px) {
+      gap: 24px;
+      margin-top: 24px;
       flex-direction: column;
       align-items: center;
     }
@@ -59,10 +66,27 @@
       margin-top: 48px;
     }
   }
+  &__serch {
+    position: relative;
+  }
+  &__country {
+    position: relative;
+  }
   &__input {
+    color: $placeholder-txt-color;
     padding-left: 32px;
     height: 40px;
     backdrop-filter: blur(10px);
+    &:hover,
+    &:focus {
+      border: 1px solid $accent-txt-color;
+      outline: 1px solid $accent-txt-color;
+    }
+    &:hover + .header__icon-search,
+    &:focus + .header__icon-search {
+      fill: $accent-txt-color;
+    }
+
     &::placeholder {
       color: $placeholder-txt-color;
 
@@ -73,7 +97,6 @@
     border: 0;
     border-radius: 20px;
     @media screen and (max-width: 767px) {
-      margin-top: 24px;
       width: 280px;
     }
 
@@ -87,30 +110,88 @@
       width: 288px;
     }
   }
+
+  &__icon-search {
+    position: absolute;
+    top: 14px;
+    right: 32px;
+    fill: $placeholder-txt-color;
+  }
+  &__btn-country {
+    position: absolute;
+    top: 14px;
+    right: 32px;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+  }
   @media screen and (max-width: 767px) {
     padding-top: 20px;
     padding-bottom: 110px;
     background-image: linear-gradient(
-        to right,
+        180deg,
         rgba(11, 11, 11, 0.5),
         rgba(11, 11, 11, 0.5)
       ),
-      url('/src/images/header_bg_320.svg');
+      url('/src/images/header-pic/pic320.jpg');
     background-size: 100%;
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          180deg,
+          rgba(11, 11, 11, 0.5),
+          rgba(11, 11, 11, 0.5)
+        ),
+        url('/src/images/header-pic/pic320@2x.jpg');
+    }
   }
 
   @media screen and (min-width: 768px) {
     padding-top: 24px;
     padding-bottom: 170px;
-    background-image: url('/src/images/header_bg_768.svg');
+    background-image: linear-gradient(
+        180deg,
+        rgba(11, 11, 11, 0.5),
+        rgba(11, 11, 11, 0.5)
+      ),
+      url('/src/images/header-pic/pic768.jpg');
     background-size: cover;
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          rgba(11, 11, 11, 0.5),
+          rgba(11, 11, 11, 0.5)
+        ),
+        url('/src/images/header-pic/pic768@2x.jpg');
+    }
   }
 
   @media screen and (min-width: 1280px) {
-    padding-top: 24px;
-    padding-bottom: 170px;
-    background-image: url('/src/images/header_bg_1280.svg');
-    background-size: 1280px;
+    padding-top: 40px;
+    padding-bottom: 190px;
+    background-image: linear-gradient(
+        180deg,
+        rgba(13, 13, 13, 0.19) 0%,
+        rgba(14, 14, 14, 0.8) 100%
+      ),
+      url('/src/images/header-pic/pic1200.jpg');
+    background-size: cover;
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          180deg,
+          rgba(13, 13, 13, 0.19) 0%,
+          rgba(14, 14, 14, 0.8) 100%
+        ),
+        url('/src/images/header-pic/pic1200@2x.jpg');
+    }
     width: 1280px;
     margin-left: auto;
     margin-right: auto;
@@ -163,7 +244,7 @@
   @media screen and (min-width: 1280px) {
     height: 200px;
     width: 240px;
-    margin-top: -26px;
+    margin-top: -40px;
 
     padding-top: 40px;
     padding-left: 16px;
