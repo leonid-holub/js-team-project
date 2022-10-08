@@ -1,4 +1,4 @@
-<header>
+<header class="bg-header">
   <section class="header">
     <div class="logo-container">
       <img class="logo" src="/src/images/logo.svg" alt="" />
@@ -7,18 +7,28 @@
       <div class="header-container">
         <h1 class="header__title">FIND BEST EVENTS AROUND THE WORLD</h1>
         <form class="header__form" action="">
-          <input
-            class="header__input"
-            type="text"
-            placeholder="Start searching"
-          />
-          <input
-            list="countries"
-            class="header__input"
-            type="text"
-            placeholder="Choose country"
-          />
-          <datalist id="countries"></datalist>
+          <label class="header__serch">
+            <input
+              class="header__input"
+              type="text"
+              placeholder="Start searching"
+            />
+            <svg class="header__icon-search" width="12" height="12">
+              <use href="/src/images/icons/icons.svg#icon-search"></use>
+            </svg>
+          </label>
+          <label class="header__country">
+            <input
+              class="header__input"
+              type="text"
+              placeholder="Choose country"
+            />
+            <button class="header__btn-country">
+              <svg class="header__icon-country" width="12" height="12">
+                <use href="/src/images/icons/icons.svg#icon-triangel"></use>
+              </svg>
+            </button>
+          </label>
         </form>
       </div>
     </div>
