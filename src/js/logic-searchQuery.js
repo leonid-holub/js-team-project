@@ -1,5 +1,6 @@
 import { FetchService } from './base_fetch';
 import { getStartPageMarkup } from './start_page-render';
+import getTotalPages from '../js/get_total_pages';
 
 import debounce from 'lodash.debounce';
 
@@ -14,6 +15,7 @@ const onSearchFildChange = function (e) {
     const result = response._embedded.events;
     cardList.innerHTML = '';
     getStartPageMarkup(result);
+    getTotalPages(response.page.totalPages);
   });
 };
 searchField.addEventListener('input', debounce(onSearchFildChange, 300));
