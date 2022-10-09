@@ -10,7 +10,7 @@ const refs = {
 };
 
 refs.closeModalBtn.addEventListener('click', closeModalBtn);
-function closeModalBtn() {
+export function closeModalBtn() {
   refs.modal.classList.add('is-hidden');
 }
 
