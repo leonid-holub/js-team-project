@@ -1,5 +1,9 @@
 import { FetchService } from './base_fetch';
+
+import { onCardModalOpen } from './modal';
+
 import getTotalPages from '../js/get_total_pages';
+
 
 const refs = {
   cardList: document.querySelector('.cards__list'),
@@ -26,7 +30,7 @@ export function getStartPageMarkup(events) {
       return `
       
     <li class="cards__item">
-        <div class="cards__link">
+        <div class="cards__link" data-id = "${event.id}">
         <img class="cards__img" src="${event.images[4].url}" alt="event-pictures" width="267px" height="220px"/> 
         <h3 class="cards__title">${event.name}</h3>
         </div>
@@ -40,6 +44,9 @@ export function getStartPageMarkup(events) {
 `;
     })
     .join('');
-
+   
   refs.cardList.insertAdjacentHTML('afterbegin', markup);
+
+  const cards = document.querySelectorAll('.cards__link');
+  cards.forEach(card => card.addEventListener('click', onCardModalOpen));
 }
