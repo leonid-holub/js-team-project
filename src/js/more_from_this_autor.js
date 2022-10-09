@@ -4,7 +4,7 @@ import { getStartPageMarkup } from './start_page-render';
 
 const refs = {
   moreFromThisAutorBtn: document.querySelector('.modal__btn-more'),
-  authorName: document.querySelector('.author-name-js'),
+
   cardList: document.querySelector('.cards__list'),
 };
 
@@ -16,11 +16,14 @@ refs.moreFromThisAutorBtn.addEventListener(
 );
 
 function onMoreFrormThisAuthorBtnClick() {
-  closeModalBtn();
   refs.cardList.innerHTML = '';
-  const authorName = '50';
-  fetchFromAPI.config.params.keyword = refs.authorName.textContent;
+
+  const authorName = document.querySelector('.author-name-js');
+  fetchFromAPI.config.params.keyword = authorName.textContent;
+
   fetchFromAPI.baseFetch().then(response => {
     getStartPageMarkup(response._embedded.events);
   });
+
+  closeModalBtn();
 }

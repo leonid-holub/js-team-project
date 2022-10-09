@@ -44,7 +44,6 @@ function closeModalKey(ev) {
 export function onCardModalOpen(ev) {
   refs.modal.classList.remove('is-hidden');
 
-    
   const fetchInfo = new FetchService();
   fetchInfo.config.params.id = ev.currentTarget.dataset.id;
 
@@ -57,7 +56,7 @@ export function onCardModalOpen(ev) {
 
       let infoPlaceHolder = '';
       if (wholeInfo.info === undefined) {
-        infoPlaceHolder = `Sorry, there is no info about this event.`
+        infoPlaceHolder = `Sorry, there is no info about this event.`;
       } else {
         infoPlaceHolder = wholeInfo.info;
       }
@@ -67,18 +66,18 @@ export function onCardModalOpen(ev) {
       // }
 
       let pricesList = [];
-      
-        for (let i = 0; i < wholeInfo.priceRanges.length; i++) {
-          let pricesItem = `<li class="modal__thumb-item">
+
+      for (let i = 0; i < wholeInfo.priceRanges.length; i++) {
+        let pricesItem = `<li class="modal__thumb-item">
             <p class="modal__text">
               <span class="modal__prices-icon">${ticketIcon}</span> 
               ${wholeInfo.priceRanges[i].type} ${wholeInfo.priceRanges[i].min}-${wholeInfo.priceRanges[i].max} ${wholeInfo.priceRanges[i].currency}
             </p>
             <a class="modal__btn modal__link-buy">Buy ticket</a>
-            </li>`
-          pricesList.push(pricesItem);
-        }
-        
+            </li>`;
+        pricesList.push(pricesItem);
+      }
+
       refs.imageS.setAttribute('src', `${wholeInfo.images[4].url}`);
       refs.imageL.setAttribute('src', `${wholeInfo.images[4].url}`);
       const markup = `
@@ -88,23 +87,31 @@ export function onCardModalOpen(ev) {
       </div>
       <div class="modal__text-block">
         <h3 class="modal__title">When</h3>
-        <p class="modal__text">${wholeInfo.dates.start.localDate}</br>${wholeInfo.dates.start.localTime.slice(0, 5)} (${wholeInfo.dates.timezone})</p>
+        <p class="modal__text">${
+          wholeInfo.dates.start.localDate
+        }</br>${wholeInfo.dates.start.localTime.slice(0, 5)} (${
+        wholeInfo.dates.timezone
+      })</p>
       </div>
       <div class="modal__text-block">
         <h3 class="modal__title">Where</h3>
-        <p class="modal__text">${wholeInfo._embedded.venues[0].city.name}, ${wholeInfo._embedded.venues[0].country.name}</br>${wholeInfo._embedded.venues[0].name}</p>
+        <p class="modal__text">${wholeInfo._embedded.venues[0].city.name}, ${
+        wholeInfo._embedded.venues[0].country.name
+      }</br>${wholeInfo._embedded.venues[0].name}</p>
       </div>
       <div class="modal__text-block">
         <h3 class="modal__title">Who</h3>
-        <p class="modal__text author-name-js">${wholeInfo._embedded.attractions[0].name}</p>
+        <p class="modal__text author-name-js">${
+          wholeInfo._embedded.attractions[0].name
+        }</p>
       </div>
       <div class="modal__prices-block">
         <h3 class="modal__title">Prices</h3>
         <ul class="modal__prices">
         ${pricesList.join('')}
-        </ul>`
-      
+        </ul>`;
+
       refs.floatText.insertAdjacentHTML('afterbegin', markup);
     });
   }
-};
+}
