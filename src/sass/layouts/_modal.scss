@@ -184,6 +184,14 @@
   }
 }
 
+.modal__info {
+  max-height: 100px;
+  overflow: auto;
+  @media screen and (min-width: 1280px) {
+    max-height: 90px;
+  }
+}
+
 .modal__prices {
   @media screen and (max-width: 767px) {
     text-align: center;
@@ -245,6 +253,7 @@
 }
 
 .modal__btn-more {
+  display: block;
   padding: 10px 15px;
   margin: 0 auto;
   color: $modal-accent-color;
