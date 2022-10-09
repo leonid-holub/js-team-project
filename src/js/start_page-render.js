@@ -1,4 +1,5 @@
 import { FetchService } from './base_fetch';
+import getTotalPages from '../js/get_total_pages';
 
 const refs = {
   cardList: document.querySelector('.cards__list'),
@@ -15,6 +16,7 @@ startPageMarkup();
 function startPageMarkup() {
   fetchFromAPI.baseFetch().then(response => {
     getStartPageMarkup(response._embedded.events);
+    getTotalPages(response.page.totalPages);
   });
 }
 

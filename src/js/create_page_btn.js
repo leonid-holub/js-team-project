@@ -1,4 +1,3 @@
-import { btnTarget } from '../js/pagination';
 export const paginationBtns = document.querySelector('[data-pagination]');
 export default function createPageBtn(value) {
   const quantityBtn = [];
