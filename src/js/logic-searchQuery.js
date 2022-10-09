@@ -10,7 +10,12 @@ const searchField = document.querySelector('.header__input');
 const onSearchFildChange = function (e) {
   const eventName = e.target.value.trim();
   fetchFromAPI.config.params.keyword = eventName;
+
   fetchFromAPI.baseFetch().then(response => {
+    const eventList = response.page.totalElements;
+    if (eventList === 0) {
+      return;
+    }
     const cardList = document.querySelector('.cards__list');
     const result = response._embedded.events;
     cardList.innerHTML = '';
