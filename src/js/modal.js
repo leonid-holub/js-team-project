@@ -21,7 +21,7 @@ const ticketIcon = `<svg width="29" height="19" viewBox="0 0 44 32"
             <path d="M34.37 1.27h-2.381v29.46h2.381v-29.46z"></path></svg>`;
 
 refs.closeModalBtn.addEventListener('click', closeModalBtn);
-function closeModalBtn() {
+export function closeModalBtn() {
   refs.modal.classList.add('is-hidden');
 }
 
