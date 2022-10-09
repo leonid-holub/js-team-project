@@ -71,6 +71,10 @@
   }
   &__country {
     position: relative;
+
+    & .header__input {
+      padding-right: 28px;
+    }
   }
   &__input {
     color: $placeholder-txt-color;
