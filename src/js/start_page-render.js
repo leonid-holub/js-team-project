@@ -28,7 +28,8 @@ export function getStartPageMarkup(events) {
     .map(event => {
       sortPicturesByWidth = event.images.sort((a, b) => b.width - a.width);
 
-      return `
+      if (event._embedded.venues[0].location !== undefined) {
+        return `
     <li class="cards__item">
         <div class="cards__link" data-id = "${event.id}">
         <img class="cards__img" src="${sortPicturesByWidth[0].url}" alt="event-pictures" width="267px" height="220px"/> 
@@ -41,6 +42,7 @@ export function getStartPageMarkup(events) {
          ${svgIconLocation}
           <span>${event._embedded.venues[0].name}</span></a>
       </li>`;
+      }
     })
     .join('');
 
