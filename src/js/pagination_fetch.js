@@ -11,7 +11,7 @@ export default function paginationFetch(page) {
     if (page === 1) {
       standardPaginationFetch();
     } else {
-      fetchFromAPI.config.params.page = page;
+      fetchFromAPI.config.params.page = page - 1;
       standardPaginationFetch();
     }
   } else {
@@ -20,7 +20,7 @@ export default function paginationFetch(page) {
       fetchFromAPI.config.params.page = 0;
       standardPaginationFetch();
     } else {
-      fetchFromAPI.config.params.page = page;
+      fetchFromAPI.config.params.page = page - 1;
       standardPaginationFetch();
     }
   }
