@@ -1,6 +1,7 @@
 import { FetchService } from './base_fetch';
 import { getStartPageMarkup } from './start_page-render';
 import getTotalPages from '../js/get_total_pages';
+import {getCountriesFromEvents} from './filter_country'
 
 import debounce from 'lodash.debounce';
 
@@ -21,6 +22,7 @@ const onSearchFildChange = function (e) {
     cardList.innerHTML = '';
     getStartPageMarkup(result);
     getTotalPages(response.page.totalPages);
+    getCountriesFromEvents(result);
   });
 };
 searchField.addEventListener('input', debounce(onSearchFildChange, 300));
