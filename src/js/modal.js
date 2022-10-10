@@ -66,16 +66,24 @@ export function onCardModalOpen(ev) {
       // }
 
       let pricesList = [];
-
-      for (let i = 0; i < wholeInfo.priceRanges.length; i++) {
-        let pricesItem = `<li class="modal__thumb-item">
+      if (wholeInfo.priceRanges !== undefined) {
+        for (let i = 0; i < wholeInfo.priceRanges.length; i++) {
+          let pricesItem = `<li class="modal__thumb-item">
             <p class="modal__text">
               <span class="modal__prices-icon">${ticketIcon}</span> 
               ${wholeInfo.priceRanges[i].type} ${wholeInfo.priceRanges[i].min}-${wholeInfo.priceRanges[i].max} ${wholeInfo.priceRanges[i].currency}
             </p>
             <a class="modal__btn modal__link-buy">Buy ticket</a>
             </li>`;
-        pricesList.push(pricesItem);
+          pricesList.push(pricesItem);
+        }
+      } else {
+        pricesList.push(`<li class="modal__thumb-item">
+            <p class="modal__text">
+        Sorry, there is no info about prices.
+        </p>
+        </li>
+        `);
       }
 
       refs.imageS.setAttribute('src', `${wholeInfo.images[4].url}`);
