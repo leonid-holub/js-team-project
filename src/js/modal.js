@@ -54,7 +54,6 @@ export function onCardModalOpen(ev) {
     fetchInfo.baseFetch().then(response => {
       const wholeInfo = response._embedded.events[0];
 
-      console.log(wholeInfo);
       let infoPlaceHolder = '';
       if (wholeInfo.info === undefined) {
         infoPlaceHolder = `Sorry, there is no info about this event.`;
@@ -65,9 +64,11 @@ export function onCardModalOpen(ev) {
       let datePlaceHolder = '';
       if (wholeInfo.dates.start.localTime === undefined) {
         datePlaceHolder = ` `;
+      } else if (wholeInfo.dates.start.localTime !== undefined && wholeInfo.dates.timezone === undefined) {
+        datePlaceHolder = `${wholeInfo.dates.start.localTime.slice(0, 5)}`;
       } else {
         datePlaceHolder = `${wholeInfo.dates.start.localTime.slice(0, 5)} (${wholeInfo.dates.timezone})`;
-      }
+      };
 
       let pricesList = [];
       if (wholeInfo.priceRanges !== undefined) {
@@ -77,7 +78,7 @@ export function onCardModalOpen(ev) {
               <span class="modal__prices-icon">${ticketIcon}</span> 
               ${wholeInfo.priceRanges[i].type} ${wholeInfo.priceRanges[i].min}-${wholeInfo.priceRanges[i].max} ${wholeInfo.priceRanges[i].currency}
             </p>
-            <a class="modal__btn modal__link-buy">Buy ticket</a>
+            <a class="modal__btn modal__link-buy" href="${wholeInfo.url}" target="_blank" rel="noreferrer noopener">Buy ticket</a>
             </li>`;
           pricesList.push(pricesItem);
         }
