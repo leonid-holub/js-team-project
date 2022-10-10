@@ -29,7 +29,6 @@ function standardPaginationFetch() {
   fetchFromAPI.baseFetch().then(response => {
     const cardList = document.querySelector('.cards__list');
     const result = response._embedded.events;
-    console.log(result);
     cardList.innerHTML = '';
     getStartPageMarkup(result);
   });
