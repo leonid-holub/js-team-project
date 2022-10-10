@@ -6,3 +6,5 @@ import './js/logic-searchQuery';
 import './js/modal';
 import './js/more_from_this_autor';
 import './js/pagination';
+
+import './js/filter_country'
