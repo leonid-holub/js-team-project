@@ -61,19 +61,24 @@ export function onCardModalOpen(ev) {
         infoPlaceHolder = wholeInfo.info;
       }
 
-      // if (wholeInfo.priceRanges.length === 0) {
-
-      // }
+      let datePlaceHolder = '';
+      if (wholeInfo.dates.start.localTime === undefined) {
+        datePlaceHolder = ` `;
+      } else if (wholeInfo.dates.start.localTime !== undefined && wholeInfo.dates.timezone === undefined) {
+        datePlaceHolder = `${wholeInfo.dates.start.localTime.slice(0, 5)}`;
+      } else {
+        datePlaceHolder = `${wholeInfo.dates.start.localTime.slice(0, 5)} (${wholeInfo.dates.timezone})`;
+      };
 
       let pricesList = [];
       if (wholeInfo.priceRanges !== undefined) {
         for (let i = 0; i < wholeInfo.priceRanges.length; i++) {
           let pricesItem = `<li class="modal__thumb-item">
-            <p class="modal__text">
+            <p class="modal__text text-flex">
               <span class="modal__prices-icon">${ticketIcon}</span> 
               ${wholeInfo.priceRanges[i].type} ${wholeInfo.priceRanges[i].min}-${wholeInfo.priceRanges[i].max} ${wholeInfo.priceRanges[i].currency}
             </p>
-            <a class="modal__btn modal__link-buy">Buy ticket</a>
+            <a class="modal__btn modal__link-buy" href="${wholeInfo.url}" target="_blank" rel="noreferrer noopener">Buy ticket</a>
             </li>`;
           pricesList.push(pricesItem);
         }
@@ -88,7 +93,7 @@ export function onCardModalOpen(ev) {
 
       refs.imageS.setAttribute('src', `${wholeInfo.images[4].url}`);
       refs.imageL.setAttribute('src', `${wholeInfo.images[4].url}`);
-      const markup = `
+      const markup = `<div class="modal__text-three"><div class="modal__text-two">
       <div class="modal__text-block">
         <h3 class="modal__title">Info</h3>
         <p class="modal__text modal__info">${infoPlaceHolder}</p>
@@ -97,15 +102,15 @@ export function onCardModalOpen(ev) {
         <h3 class="modal__title">When</h3>
         <p class="modal__text">${
           wholeInfo.dates.start.localDate
-        }</br>${wholeInfo.dates.start.localTime.slice(0, 5)} (${
-        wholeInfo.dates.timezone
-      })</p>
+        }</br>${datePlaceHolder}</p>
+      </div>
       </div>
       <div class="modal__text-block">
         <h3 class="modal__title">Where</h3>
         <p class="modal__text">${wholeInfo._embedded.venues[0].city.name}, ${
         wholeInfo._embedded.venues[0].country.name
       }</br>${wholeInfo._embedded.venues[0].name}</p>
+      </div>
       </div>
       <div class="modal__text-block">
         <h3 class="modal__title">Who</h3>

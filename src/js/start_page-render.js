@@ -1,6 +1,7 @@
 import { FetchService } from './base_fetch';
 import { onCardModalOpen } from './modal';
 import getTotalPages from '../js/get_total_pages';
+import { pagesVerification } from './pages_verification';
 
 const refs = {
   cardList: document.querySelector('.cards__list'),
@@ -19,7 +20,7 @@ startPageMarkup();
 function startPageMarkup() {
   fetchFromAPI.baseFetch().then(response => {
     getStartPageMarkup(response._embedded.events);
-    getTotalPages(response.page.totalPages);
+    getTotalPages(pagesVerification(response));
   });
 }
 

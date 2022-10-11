@@ -1,3 +1,15 @@
+@keyframes cardsAppearanse {
+0% {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .gallery {
 
   background-color: $section-bckg-color;
@@ -52,6 +64,8 @@
   @media screen and (min-width: 1280px) {
     min-height: 300px;
   }
+  animation-name: cardsAppearanse;
+  animation-duration: 1500ms;
 }
 
 .cards__link {
@@ -61,10 +75,22 @@
   color: inherit;
 
   margin-bottom: 4px;
+  cursor: pointer;
 
   @media screen and (min-width: 1280px) {
     margin-bottom: 8px;
   }
+
+    &:hover .cards__img,
+    &:focus .cards__img {
+      transform: scale(1.1);
+    }
+
+    &:hover .cards__title,
+    &:focus .cards__title {
+      color: $main-text-color;
+      text-shadow: 1px 1px 3px $accent-txt-color;
+    }
 }
 
 .cards__item::before {
@@ -126,6 +152,8 @@
     top: 19px;
     right: 21px;
   }
+
+  transition: transform $anim;
 }
 
 .cards__title {
@@ -141,6 +169,8 @@
     font-size: 16px;
     line-height: 1.25;
   }
+
+  transition: color $anim;
 }
 
 .cards__date {
