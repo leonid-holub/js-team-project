@@ -14,8 +14,9 @@ export function getTotal(total) {
   totalPages = total;
   createPageBtn(totalPages);
   pageBtns = document.querySelectorAll('[btn-pagination]');
-  pageBtns[0].classList.add('is-active');
   paginationMenu.addEventListener('click', onBtnClick);
+  if (pageBtns[0] === undefined) return;
+  pageBtns[0].classList.add('is-active');
 }
 
 function onBtnClick(e) {
