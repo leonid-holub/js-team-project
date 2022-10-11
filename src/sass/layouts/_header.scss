@@ -24,7 +24,6 @@
   &__title {
     text-align: center;
     font-weight: 900;
-
     color: $accent-txt-color;
 
     @media screen and (max-width: 767px) {
@@ -48,6 +47,62 @@
       width: 608px;
       font-size: 50px;
       line-height: calc(61 / 50);
+    }
+    animation: glow 1.5s ease-in-out infinite alternate,
+      scaleTitle 1s ease-in-out 1 alternate;
+
+    @keyframes scaleTitle {
+      0% {
+        transform: scale(0);
+      }
+      10% {
+        transform: scale(0.1);
+      }
+      20% {
+        transform: scale(0.2);
+      }
+      30% {
+        transform: scale(0.3);
+      }
+      40% {
+        transform: scale(0.4);
+      }
+
+      50% {
+        transform: scale(0.5);
+      }
+      60% {
+        transform: scale(0.6);
+      }
+      70% {
+        transform: scale(0.7);
+      }
+      80% {
+        transform: scale(0.8);
+      }
+      90% {
+        transform: scale(0.9);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes glow {
+      from {
+        color: $accent-txt-color;
+        text-shadow: 0 0 10px $animation-color-first,
+          0 0 11px $animation-color-first, 0 0 12px $animation-color-first;
+      }
+
+      to {
+        color: $accent-txt-color;
+        text-shadow: 0 0 10px $animation-color-first,
+          0 0 13px $animation-color-first, 0 0 14px $animation-color-second,
+          0 0 15px $animation-color-second, 0 0 16px $animation-color-second,
+          0 1 17px $animation-color-second;
+      }
     }
   }
   &__form {
