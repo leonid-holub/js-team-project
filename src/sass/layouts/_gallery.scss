@@ -1,18 +1,32 @@
+@keyframes cardsAppearanse {
+0% {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .gallery {
-  padding-top: 20px;
 
   background-color: $section-bckg-color;
 
   background-image: url(../images/icons/gallery-img/noise-body.svg);
   background-size: auto;
   background-position: center;
+  margin-top: -76px;
 }
 
 .cards {
+
   margin-bottom: 60px;
   padding-bottom: 160px;
   background-image: url(../images/icons/gallery-img/bgc-body.svg);
-  background-size: cover;
+  background-size: auto;
+  background-repeat: no-repeat;
   background-position: center;
 }
 
@@ -50,6 +64,8 @@
   @media screen and (min-width: 1280px) {
     min-height: 300px;
   }
+  animation-name: cardsAppearanse;
+  animation-duration: 1500ms;
 }
 
 .cards__link {
@@ -59,10 +75,22 @@
   color: inherit;
 
   margin-bottom: 4px;
+  cursor: pointer;
 
   @media screen and (min-width: 1280px) {
     margin-bottom: 8px;
   }
+
+    &:hover .cards__img,
+    &:focus .cards__img {
+      transform: scale(1.1);
+    }
+
+    &:hover .cards__title,
+    &:focus .cards__title {
+      color: $main-text-color;
+      text-shadow: 1px 1px 3px $accent-txt-color;
+    }
 }
 
 .cards__item::before {
@@ -99,6 +127,7 @@
 .cards__img {
   position: absolute;
   overflow: hidden;
+  object-fit: cover;
   top: 9px;
   right: 10px;
 
@@ -123,6 +152,8 @@
     top: 19px;
     right: 21px;
   }
+
+  transition: transform $anim;
 }
 
 .cards__title {
@@ -138,6 +169,8 @@
     font-size: 16px;
     line-height: 1.25;
   }
+
+  transition: color $anim;
 }
 
 .cards__date {
@@ -187,3 +220,4 @@
   display: block;
   text-align: center;
 }
+
