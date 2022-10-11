@@ -1,27 +1,36 @@
+
 import {FetchService} from './base_fetch';
 
 import { getStartPageMarkup } from './start_page-render';
 
+
 const fetchCountries = new FetchService();
 
 const refs = {
-    form: document.querySelector('.header__form'),
+  form: document.querySelector('.header__form'),
 
-    allCountries: document.querySelectorAll('#countries option'),
-    countryListFromOption: document.querySelector('.header__form #countries'),
+  allCountries: document.querySelectorAll('#countries option'),
+  countryListFromOption: document.querySelector('.header__form #countries'),
 
-    countrySearch: document.querySelector('.header__country .header__input'),
-    searchField: document.querySelector('.header__serch .header__input'),
+  countrySearch: document.querySelector('.header__country .header__input'),
+  searchField: document.querySelector('.header__serch .header__input'),
 
     cardList: document.querySelector('.cards__list'),
     cards: document.querySelector('.cards'),
 }
+
+  cardList: document.querySelector('.cards__list'),
+
+  pagination: document.querySelector('.pagination'),
+};
+
 const allOptions = refs.countryListFromOption.childNodes;
 const info = document.createElement('div');
 
 refs.countrySearch.addEventListener('change', onCountrySearchChange);
 
 function onCountrySearchChange(e) {
+
     const query = e.target.value.trim();
     let countryCode = null;
 
@@ -45,7 +54,6 @@ function onCountrySearchChange(e) {
 
         const result = response._embedded.events;
 
-        refs.cardList.innerHTML = '';
         refs.cardList.classList.remove('cards__list--hidden');
 
         getStartPageMarkup(result);
@@ -59,20 +67,6 @@ function onCountrySearchChange(e) {
 
 export function getCountriesFromEvents(events) {
     let receivedCountries = [];
-
-    events.map((event, i) => {
-        const countriesFromEvent = event._embedded.venues[0].country;
-        receivedCountries.push(countriesFromEvent);
-    })
-
-    const result = receivedCountries.reduce((country, i) => {
-        if (!country.find(it => it.countryCode == i.countryCode)) {
-          country.push(i);
-        }
-        return country;
-      }, []);
-
-    refs.countryListFromOption.innerHTML = ''
 
       result.forEach((elem, index) => {
         refs.countryListFromOption.insertAdjacentHTML(
