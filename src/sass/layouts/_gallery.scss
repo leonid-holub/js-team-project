@@ -1,5 +1,5 @@
 @keyframes cardsAppearanse {
-0% {
+  0% {
     transform: translateY(-15px);
     opacity: 0;
   }
@@ -11,7 +11,6 @@
 }
 
 .gallery {
-
   background-color: $section-bckg-color;
 
   background-image: url(../images/icons/gallery-img/noise-body.svg);
@@ -21,7 +20,7 @@
 }
 
 .cards {
-
+  min-height: 100vh;
   margin-bottom: 60px;
   padding-bottom: 160px;
   background-image: url(../images/icons/gallery-img/bgc-body.svg);
@@ -81,16 +80,16 @@
     margin-bottom: 8px;
   }
 
-    &:hover .cards__img,
-    &:focus .cards__img {
-      transform: scale(1.1);
-    }
+  &:hover .cards__img,
+  &:focus .cards__img {
+    transform: scale(1.1);
+  }
 
-    &:hover .cards__title,
-    &:focus .cards__title {
-      color: $main-text-color;
-      text-shadow: 1px 1px 3px $accent-txt-color;
-    }
+  &:hover .cards__title,
+  &:focus .cards__title {
+    color: $main-text-color;
+    text-shadow: 1px 1px 3px $accent-txt-color;
+  }
 }
 
 .cards__item::before {
@@ -220,4 +219,3 @@
   display: block;
   text-align: center;
 }
-
