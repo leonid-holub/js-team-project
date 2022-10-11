@@ -1,5 +1,5 @@
 @keyframes cardsAppearanse {
-0% {
+  0% {
     transform: translateY(-15px);
     opacity: 0;
   }
@@ -10,8 +10,20 @@
   }
 }
 
-.gallery {
+@keyframes cardsHidden {
+  0% {
+    transform: translateY(0);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(-15px);
+      opacity: 1;
+    }
+  }
 
+
+.gallery {
   background-color: $section-bckg-color;
 
   background-image: url(../images/icons/gallery-img/noise-body.svg);
@@ -21,7 +33,7 @@
 }
 
 .cards {
-
+  min-height: 100vh;
   margin-bottom: 60px;
   padding-bottom: 160px;
   background-image: url(../images/icons/gallery-img/bgc-body.svg);
@@ -48,6 +60,12 @@
     row-gap: 40px;
     column-gap: 32px;
   }
+}
+
+.cards__list--hidden {
+  animation-name: cardsHidden;
+  animation-duration: 1500ms;
+  display: none;
 }
 
 .cards__item {
@@ -81,16 +99,16 @@
     margin-bottom: 8px;
   }
 
-    &:hover .cards__img,
-    &:focus .cards__img {
-      transform: scale(1.1);
-    }
+  &:hover .cards__img,
+  &:focus .cards__img {
+    transform: scale(1.1);
+  }
 
-    &:hover .cards__title,
-    &:focus .cards__title {
-      color: $main-text-color;
-      text-shadow: 1px 1px 3px $accent-txt-color;
-    }
+  &:hover .cards__title,
+  &:focus .cards__title {
+    color: $main-text-color;
+    text-shadow: 1px 1px 3px $accent-txt-color;
+  }
 }
 
 .cards__item::before {
@@ -221,3 +239,51 @@
   text-align: center;
 }
 
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 220px;
+  min-height: 50px;
+
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 15px;
+
+  background-color: rgba(236, 113, 215, 0.641);
+  box-shadow: 1px 1px 5px 2px $accent-txt-color;
+
+  border-radius: 50px 0px;
+
+  text-align: center;
+  font-size: 12px;
+  line-height: 18px;
+
+  transition: transform 300ms;
+
+  animation-name: cardsAppearanse;
+  animation-duration: 1500ms;
+
+  @media screen and (min-width: 768px) {
+    width: 350px;
+    min-height: 80px;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 500px;
+    min-height: 100px;
+    font-size: 20px;
+    line-height: 35px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  box-shadow: 1px 1px 3px 5px $main-text-color;
+  }
+}

@@ -3,6 +3,7 @@ import finalPageBtn from '../js/final_page_btn';
 import updatePageBtn from '../js/update_page_btn';
 import endPageBtn from '../js/end_page_btn';
 import paginationFetch from './pagination_fetch';
+import { smoothScroll } from './smoothScroll';
 const paginationMenu = document.querySelector('[data-pagination]');
 let pageBtns = document.querySelectorAll('[btn-pagination]');
 
@@ -13,14 +14,16 @@ export function getTotal(total) {
   totalPages = total;
   createPageBtn(totalPages);
   pageBtns = document.querySelectorAll('[btn-pagination]');
-  pageBtns[0].classList.add('is-active');
   paginationMenu.addEventListener('click', onBtnClick);
+  if (pageBtns[0] === undefined) return;
+  pageBtns[0].classList.add('is-active');
 }
 
 function onBtnClick(e) {
   e.preventDefault();
   btnValue = Number(e.target.textContent);
   paginationFetch(btnValue);
+  smoothScroll();
   if (!e.target.hasAttribute('btn-pagination')) {
     return;
   }
