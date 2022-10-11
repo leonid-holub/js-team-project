@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "axios": "^1.1.2",
+    "gsap": "^2.0.0",
     "lodash.debounce": "^4.0.8",
     "modern-normalize": "^1.1.0"
   },

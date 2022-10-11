@@ -1,4 +1,6 @@
 import { FetchService } from './base_fetch';
+import { startModalAnimation } from './animation-modal';
+import { closeModalAnimation } from './animation-modal';
 
 const refs = {
   pricesBox: document.querySelector('.modal__prices'),
@@ -23,12 +25,14 @@ const ticketIcon = `<svg width="29" height="19" viewBox="0 0 44 32"
 refs.closeModalBtn.addEventListener('click', closeModalBtn);
 export function closeModalBtn() {
   refs.modal.classList.add('is-hidden');
+  closeModalAnimation();
 }
 
 refs.modal.addEventListener('click', closeModalBack);
 function closeModalBack(ev) {
   if (ev.target === refs.modal) {
     refs.modal.classList.add('is-hidden');
+    closeModalAnimation();
   } else {
     return;
   }
@@ -38,11 +42,13 @@ window.addEventListener('keydown', closeModalKey);
 function closeModalKey(ev) {
   if (ev.code === 'Escape') {
     refs.modal.classList.add('is-hidden');
+    closeModalAnimation();
   }
 }
 
 export function onCardModalOpen(ev) {
-  refs.modal.classList.remove('is-hidden');
+  startModalAnimation();
+  setTimeout(() => refs.modal.classList.remove('is-hidden'), 400);
 
   const fetchInfo = new FetchService();
   fetchInfo.config.params.id = ev.currentTarget.dataset.id;
