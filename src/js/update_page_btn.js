@@ -25,11 +25,11 @@ export default function updatePageBtn(page) {
       );
     }
   }
-  console.log(btns);
+
   btns.push(
     '...',
     `<li><button class="pagination-btn " href="#" type="button" btn-pagination>${totalPages}</button></li>`
   );
-  console.log(btns);
+
   paginationBtns.innerHTML = btns.join('');
 }
