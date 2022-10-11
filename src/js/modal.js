@@ -64,13 +64,25 @@ export function onCardModalOpen(ev) {
       let datePlaceHolder = '';
       if (wholeInfo.dates.start.localTime === undefined) {
         datePlaceHolder = ` `;
-      } else if (wholeInfo.dates.start.localTime !== undefined && wholeInfo.dates.timezone === undefined) {
+      } else if (
+        wholeInfo.dates.start.localTime !== undefined &&
+        wholeInfo.dates.timezone === undefined
+      ) {
         datePlaceHolder = `${wholeInfo.dates.start.localTime.slice(0, 5)}`;
       } else {
-        datePlaceHolder = `${wholeInfo.dates.start.localTime.slice(0, 5)} (${wholeInfo.dates.timezone})`;
-      };
+        datePlaceHolder = `${wholeInfo.dates.start.localTime.slice(0, 5)} (${
+          wholeInfo.dates.timezone
+        })`;
+      }
 
       let pricesList = [];
+      if (wholeInfo._embedded.attractions === undefined) {
+        const emptyModalMarkup = refs.floatText.insertAdjacentHTML(
+          'afterbegin',
+          emptyModalMarkup
+        );
+        return;
+      }
       if (wholeInfo.priceRanges !== undefined) {
         for (let i = 0; i < wholeInfo.priceRanges.length; i++) {
           let pricesItem = `<li class="modal__thumb-item">
