@@ -177,7 +177,7 @@ export function onCardModalOpen(ev) {
           localStorage.setItem('Event', JSON.stringify(objEvent));
         }
       } else {
-        for (let i = 0; i < allEvents.length; i += 1) {
+        for (let i = 0; i <= allEvents.length; i += 1) {
           if (
             allEvents[i].name === wholeInfo._embedded.attractions[0].name &&
             allEvents[i].dataEvents === wholeInfo.dates.start.localDate &&
