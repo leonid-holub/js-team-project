@@ -35,8 +35,9 @@ function onCloseModalBasket() {
   modalFavorites.classList.add('is-hidden');
 }
 
-function onAddToFavorites() {
+function onAddToFavorites(e) {
   saveBasketOnLocalStorage();
+  e.currentTarget.setAttribute('disabled', 'disabled');
 }
 if (localStorage.getItem('Events') === null) {
   return;
