@@ -1,12 +1,18 @@
 import { FetchService } from './base_fetch';
 import { getStartPageMarkup } from './start_page-render';
+import getTotalPages from '../js/get_total_pages';
 import { defaultCountryDataList } from './datalist_countries';
 import { getAnimation, removeListHidden, removeDiv } from './info-anim';
+import { suppCountries } from './all_supp_countries';
+import { pagesVerification } from './pages_verification';
+import debounce from 'lodash.debounce';
 const fetchCountries = new FetchService();
+
+const DELAY_MS = 500;
 
 const refs = {
   form: document.querySelector('.header__form'),
-
+  resetCountries: document.querySelector('.header__cancel-circle'),
   allCountries: document.querySelectorAll('#countries option'),
   countryListFromOption: document.querySelector('.header__form #countries'),
 
@@ -29,49 +35,24 @@ refs.countrySearch.addEventListener('change', onCountrySearchChange);
 
 function onCountrySearchChange(e) {
   const query = e.target.value.trim();
-  let countryCode = null;
-
-  fetchCountries.config.params.countryCode = countryCode;
-  fetchCountries.config.params.keyword = refs.searchField.value;
-
-  fetchCountries
-    .baseFetch()
-    .then(response => {
-      if (response.hasOwnProperty('_embedded') === false) {
-        refs.cardList.classList.add('cards__list--hidden');
-        e.target.value = '';
-
-        throw new Error(
-          `Ooops...there are no events in ${query}. Please, choose another country.`
-        );
-      }
-      info.remove();
-
-      const result = response._embedded.events;
-
-      refs.cardList.classList.remove('cards__list--hidden');
-
-      getStartPageMarkup(result);
-    })
-    .catch(e => {
-      info.classList.add('info');
-      refs.cards.prepend(info);
-      info.textContent = e.message;
-    });
+  let countryCode = suppCountries.getKeyForValues(refs.countrySearch.value);
 
   fetchCountries.config.params.countryCode = countryCode;
   fetchCountries.config.params.keyword = refs.searchField.value;
 
   fetchCountries.baseFetch().then(response => {
     getAnimation(response, info, cardList, cards, query, e);
-
+    refs.resetCountries.classList.remove('is-hidden');
     if (response.hasOwnProperty('_embedded') === false) {
+      e.target.value = '';
       return;
     }
 
     removeListHidden(cardList);
     const result = response._embedded.events;
+    cardList.innerHTML = '';
     getStartPageMarkup(result);
+    getTotalPages(pagesVerification(response));
     removeDiv(info);
   });
 }
@@ -105,5 +86,32 @@ export function getCountriesFromEvents(events) {
 
   if (refs.countrySearch !== '') {
     return;
+  }
+}
+
+refs.form.addEventListener('input', debounce(onFormChange, DELAY_MS));
+
+function onFormChange(e) {
+  let searchFromEvent = null;
+  let searchFromCountry = null;
+  let valueFromEvent = '';
+  let valueFromCountry = '';
+
+  if (e.target.name === 'event') {
+    searchFromEvent = e.target;
+    valueFromEvent = searchFromEvent.value;
+  }
+
+  if (e.target.name === 'country') {
+    searchFromCountry = e.target;
+    valueFromCountry = searchFromCountry.value;
+  }
+
+  if (valueFromEvent !== '') {
+    removeDiv(info);
+  }
+
+  if (valueFromCountry !== '') {
+    removeDiv(info);
   }
 }

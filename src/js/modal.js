@@ -60,6 +60,10 @@ export function onCardModalOpen(ev) {
     fetchInfo.baseFetch().then(response => {
       const wholeInfo = response._embedded.events[0];
 
+      const imagesSortByWidth = wholeInfo.images.sort(
+        (a, b) => b.width - a.width
+      );
+
       let infoPlaceHolder = '';
       if (wholeInfo.info === undefined) {
         infoPlaceHolder = `Sorry, there is no info about this event.`;
@@ -83,8 +87,8 @@ export function onCardModalOpen(ev) {
 
       let pricesList = [];
       if (wholeInfo._embedded.attractions === undefined) {
-        refs.imageS.setAttribute('src', `${wholeInfo.images[4].url}`);
-        refs.imageL.setAttribute('src', `${wholeInfo.images[4].url}`);
+        refs.imageS.setAttribute('src', `${imagesSortByWidth[0].url}`);
+        refs.imageL.setAttribute('src', `${imagesSortByWidth[0].url}`);
         const emptyModalMarkup = `<div class="modal__text-three"><div class="modal__text-two">
       <div class="modal__text-block">
         <h3 class="modal__title">Info</h3>
@@ -114,8 +118,8 @@ export function onCardModalOpen(ev) {
         `);
       }
 
-      refs.imageS.setAttribute('src', `${wholeInfo.images[4].url}`);
-      refs.imageL.setAttribute('src', `${wholeInfo.images[4].url}`);
+      refs.imageS.setAttribute('src', `${imagesSortByWidth[0].url}`);
+      refs.imageL.setAttribute('src', `${imagesSortByWidth[0].url}`);
       const markup = `<div class="modal__text-three"><div class="modal__text-two">
       <div class="modal__text-block">
         <h3 class="modal__title">Info</h3>
@@ -148,6 +152,20 @@ export function onCardModalOpen(ev) {
         </ul>`;
 
       refs.floatText.insertAdjacentHTML('afterbegin', markup);
+      const objEvent = {
+        imgEvent: wholeInfo.images[4].url,
+        name: wholeInfo._embedded.attractions[0].name,
+        country: wholeInfo._embedded.venues[0].country.name,
+        city: wholeInfo._embedded.venues[0].city.name,
+        urlBuyTicket: wholeInfo.url,
+        dataEvents: wholeInfo.dates.start.localDate,
+      };
+      localStorage.setItem('Event', JSON.stringify(objEvent));
+
+      const addToLocalStorage = document.querySelector(
+        '[data-add-on-local-storage]'
+      );
+      addToLocalStorage.addEventListener('click', onOpenModalBasket);
     });
   }
 }

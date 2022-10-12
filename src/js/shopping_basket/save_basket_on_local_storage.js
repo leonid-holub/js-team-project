@@ -1,5 +1,3 @@
-import { createBasketEvents } from './create_bascket_events';
-
 export function saveBasketOnLocalStorage() {
   let allEvents = [];
   let basketLocalStorage;

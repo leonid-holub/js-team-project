@@ -1,15 +1,43 @@
 import { createBasketEvents } from './create_bascket_events';
+import { onOpenModalFavorites } from './open_modal_shopping_basket';
+import { saveBasketOnLocalStorage } from './save_basket_on_local_storage';
 
-const closeModalBasket = document.querySelector(
-  '.modal-shopping-basket__btn-close'
+const closeModalFavorites = document.querySelector(
+  '[data-modal-favorites-close]'
 );
-const modalBasket = document.querySelector('[data-modal-shopping-basket]');
-closeModalBasket.addEventListener('click', onCloseModalBasket);
+const modalFavorites = document.querySelector('[data-modal-favorites]');
+const openModalFavorites = document.querySelector(
+  '[data-open-modal-favorites]'
+);
+const addToFavorites = document.querySelector('[data-modal-favorites-add]');
+const myFavorites = document.querySelector('.modal-favorites__info');
+let allEvents = [];
+let basketLocalStorage;
 
-function onCloseModalBasket() {
-  modalBasket.classList.add('is-hidden');
+openModalFavorites.addEventListener('click', onOpenModalFavorites);
+closeModalFavorites.addEventListener('click', onCloseModalBasket);
+addToFavorites.addEventListener('click', onAddToFavorites);
+console.log(myFavorites);
+myFavorites.addEventListener('click', onDeleteBtn);
+
+export function onDeleteBtn(e) {
+  if (!e.target.hasAttribute('data-favorites-delete')) {
+    return;
+  }
+  basketLocalStorage = localStorage.getItem('Events');
+  allEvents = JSON.parse(basketLocalStorage);
+  allEvents.splice(e.target.getAttribute('data'), 1);
+  localStorage.setItem('Events', JSON.stringify(allEvents));
+  createBasketEvents();
 }
 
+function onCloseModalBasket() {
+  modalFavorites.classList.add('is-hidden');
+}
+
+function onAddToFavorites() {
+  saveBasketOnLocalStorage();
+}
 if (localStorage.getItem('Events') === null) {
   return;
 } else {
