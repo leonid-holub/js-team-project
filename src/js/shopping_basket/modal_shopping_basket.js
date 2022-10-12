@@ -21,21 +21,24 @@ addToFavorites.addEventListener('click', onAddToFavorites);
 myFavorites.addEventListener('click', onDeleteBtn);
 
 export function onDeleteBtn(e) {
-  if (!e.target.hasAttribute('data-favorites-delete')) {
-    return;
+  if (
+    e.target.hasAttribute('data-favorites-delete') ||
+    e.target.hasAttribute('data-favorites-delete-icon')
+  ) {
+    basketLocalStorage = localStorage.getItem('Events');
+    allEvents = JSON.parse(basketLocalStorage);
+    allEvents.splice(e.target.getAttribute('data'), 1);
+    localStorage.setItem('Events', JSON.stringify(allEvents));
+    createBasketEvents();
+    console.log(e.target);
   }
-  basketLocalStorage = localStorage.getItem('Events');
-  allEvents = JSON.parse(basketLocalStorage);
-  allEvents.splice(e.target.getAttribute('data'), 1);
-  localStorage.setItem('Events', JSON.stringify(allEvents));
-  createBasketEvents();
+  return;
 }
 
 function onCloseModalBasket() {
   modalFavorites.classList.add('is-hidden');
 }
 
-<<<<<<< HEAD
 modalFavorites.addEventListener('click', closeModalFavBack);
 function closeModalFavBack(ev) {
   if (ev.target === modalFavorites) {
@@ -52,11 +55,10 @@ function closeModalFavKey(ev) {
   }
 }
 
-function onAddToFavorites() {
-=======
 function onAddToFavorites(e) {
->>>>>>> dev
+  console.log(e.currentTarget);
   saveBasketOnLocalStorage();
+
   e.currentTarget.setAttribute('disabled', 'disabled');
 }
 if (localStorage.getItem('Events') === null) {
