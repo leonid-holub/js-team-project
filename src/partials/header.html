@@ -8,7 +8,7 @@
       <div class="header-container">
         <h1 class="header__title">FIND BEST EVENTS AROUND THE WORLD</h1>
 
-        <form class="header__form" action="">
+        <form class="header__form">
           <label class="header__serch">
             <input
               class="header__input"
@@ -32,13 +32,9 @@
             <svg class="header__cancel-circle is-hidden" width="12" height="12">
               <use href="/src/images/icons/icons.svg#cancel-circle"></use>
             </svg>
-            <button class="header__btn-country">
-              <!-- <svg class="header__icon-country" width="12" height="12">
-                <use href="/src/images/icons/icons.svg#icon-triangel"></use>
-              </svg> -->
-            </button>
             <datalist id="countries"></datalist>
           </label>
+          <button class="header__btn-country"></button>
         </form>
       </div>
     </div>
@@ -50,7 +46,11 @@
       <button class="header__btn-sign header__btn" data-signform-open>
         Sign up
       </button>
-      <button class="header__btn-fav header__btn" type="button" data-open-modal-favorites>
+      <button
+        class="header__btn-fav header__btn"
+        type="button"
+        data-open-modal-favorites
+      >
         <svg class="header__btn-fav-icon" width="25" height="25">
           <use href="./images/icons/icons.svg#icon-ticket-form"></use>
         </svg>

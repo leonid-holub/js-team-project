@@ -149,7 +149,8 @@ export function onCardModalOpen(ev) {
         <h3 class="modal__title">Prices</h3>
         <ul class="modal__prices">
         ${pricesList.join('')}
-        </ul>`;
+        </ul>
+        </div>`;
 
       refs.floatText.insertAdjacentHTML('afterbegin', markup);
       const objEvent = {
