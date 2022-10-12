@@ -328,30 +328,45 @@
 .header__auth-btns {
   position: absolute;
   top: 20px;
-  right: 30px;
 
   display: flex;
-  gap: 15px;
+  flex-direction: column;
+  right: 30px;
+  gap: 8px;
+  
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 
-  @media screen and (min-width: 768px) and (max-width: 1280px) {
-    flex-direction: column;
+  @media screen and (min-width: 1280px) {
+    right: calc(((100% - 1280px) / 2) + 20px);
+    flex-direction: row;
+    gap: 15px;
   }
 }
 
 .header__btn {
-  width: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 10px;
+  width: 90px;
+  font-size: 16px;
   font-weight: 600;
   color: $accent-txt-color;
-  background-color: transparent;
   border: 1px solid $accent-txt-color;
-  border-radius: 4px;
-  @media screen and (min-width: 768px) and (max-width: 1280px) {
-    height: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    padding: 5px 5px;
   }
 }
 
 .header__btn-log {
-  padding: 10px 10px;
+  background-color: transparent;
+  transition: box-shadow $anim, color $anim, border-color $anim, text-shadow $anim;
   &:hover,
   &:focus {
     color: $main-text-color;
@@ -362,12 +377,11 @@
 }
 
 .header__btn-sign {
-  padding: 10px 10px;
   background-color: rgba(255, 255, 255, 0.85);
+  transition: box-shadow $anim, color $anim, background-color $anim, text-shadow $anim; 
   &:hover,
   &:focus {
     color: $main-text-color;
-    // border-color: $main-text-color;
     background-color: $accent-txt-color;
     text-shadow: 1px 1px 3px $main-text-color;
     box-shadow: 1px 1px 3px $accent-txt-color;
@@ -375,7 +389,30 @@
 }
 
 .header__btn-fav {
+  width: 45px;
   background-color: $accent-txt-color;
   padding: 0;
-  color: black;
+
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 40px;
+    padding: 4px 0;
+    position: absolute;
+    right: 105px;
+  }
+
+  color: $section-bckg-color;
+  transition: box-shadow $anim, color $anim;
+  &:hover,
+  &:focus {
+    box-shadow: 1px 1px 3px $main-text-color;
+    color: $main-text-color;
+  }
+}
+
+.header__btn-fav-icon {
+  fill: currentColor;
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 20px;
+    height: 20px;
+  }
 }

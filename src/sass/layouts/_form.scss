@@ -1,0 +1,187 @@
+.signform {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+
+    @media screen and (max-width: 767px) {
+        padding: 20px;
+        min-width: 280px;
+        height: 640px;
+        text-align: center;
+        border-radius: 150px 0px;
+    }
+
+    @media screen and (min-width: 768px) {
+        padding: 20px 90px;
+        width: 600px;
+        height: 650px;
+    }
+
+    background-color: #fff2fd;
+    border-radius: 300px 0px;
+
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity $anim;
+
+    .is-hidden & {
+        opacity: 0;
+        transform: translate(-40%, -40%) scale(0.1);
+    }
+    z-index: 20;
+}
+
+.signform.logform {
+    @media screen and (max-width: 767px) {
+        height: 480px;
+    }
+    
+    @media screen and (min-width: 768px) {
+        height: 470px;
+    }
+}
+
+.signform-form {
+    padding: 40px;
+}
+
+.signform__logo {
+    color: $accent-txt-color;
+    display: block;
+    width: 150px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.signform__logo-icon {
+    display: block;
+    margin: 0 auto;
+    fill: currentColor;
+    @media screen and (max-width: 767px) {
+        width: 100px;
+    }
+}
+
+.signform__group {
+    margin-bottom: 30px;
+}
+
+.signform__wrap {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    &:not(last-child) {
+        margin-bottom: 15px;
+    }
+}
+
+.signform__label {
+    color: $section-bckg-color;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.01em;
+}
+
+.signform__field {
+    padding: 11px 42px;
+
+    height: 40px;
+
+    color: $section-bckg-color;
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    border-radius: 4px;
+    outline: transparent;
+
+    transition: border-color $anim;
+
+    &:focus {
+        border-color: $modal-accent-color;
+    }
+}
+
+.signform__icon {
+    position: absolute;
+    bottom: 11px;
+    left: 12px;
+    fill: $accent-txt-color;
+
+    transition: fill $anim;
+
+    .signform__field:focus + & {
+        fill: $modal-accent-color;
+    }
+}
+
+.signform__agreement {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 8px;
+}
+
+.icon-uncheck {
+    transition: opacity $anim;
+
+    .register-checkbox:checked+.register-checkbox__icon>& {
+        opacity: 0;
+    }
+}
+
+.icon-check {
+    opacity: 0;
+    transition: opacity $anim;
+
+    .register-checkbox:checked+.register-checkbox__icon>& {
+        opacity: 1;
+    }
+}
+
+.register-checkbox__text {
+    font-size: 12px;
+    margin-left: 10px;
+    color: $section-bckg-color;
+    line-height: 1.71;
+    user-select: none;
+}
+
+.register-checkbox__link {
+    color: $modal-accent-color;
+    text-decoration: underline;
+}
+
+.signform__btn {
+    display: block;
+    margin: 0 auto;
+    padding: 7px 30px;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    color: $main-text-color;
+    background-color: $accent-txt-color;
+    border: 1px solid $accent-txt-color;
+    border-radius: 5px;
+
+    transition: border-color $anim, box-shadow $anim;
+
+    @media screen and (max-width: 767px) {
+        padding: 7px 10px;
+
+    }
+    
+    &:hover,
+    &:focus {
+        border-color: $modal-accent-color;
+        box-shadow: 1px 1px 3px $modal-accent-color;
+    }
+}
+

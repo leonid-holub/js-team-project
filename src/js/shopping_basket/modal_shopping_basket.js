@@ -17,6 +17,7 @@ let basketLocalStorage;
 openModalFavorites.addEventListener('click', onOpenModalFavorites);
 closeModalFavorites.addEventListener('click', onCloseModalBasket);
 addToFavorites.addEventListener('click', onAddToFavorites);
+
 myFavorites.addEventListener('click', onDeleteBtn);
 
 export function onDeleteBtn(e) {
@@ -34,6 +35,7 @@ function onCloseModalBasket() {
   modalFavorites.classList.add('is-hidden');
 }
 
+<<<<<<< HEAD
 modalFavorites.addEventListener('click', closeModalFavBack);
 function closeModalFavBack(ev) {
   if (ev.target === modalFavorites) {
@@ -51,7 +53,11 @@ function closeModalFavKey(ev) {
 }
 
 function onAddToFavorites() {
+=======
+function onAddToFavorites(e) {
+>>>>>>> dev
   saveBasketOnLocalStorage();
+  e.currentTarget.setAttribute('disabled', 'disabled');
 }
 if (localStorage.getItem('Events') === null) {
   return;

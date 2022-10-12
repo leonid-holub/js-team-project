@@ -17,10 +17,10 @@ const fetchFromAPI = new FetchService();
 resetCountries.addEventListener('click', () => {
   resetCountries.classList.add('is-hidden');
   countrySearch.value = '';
-  onSearchFildChange2();
+  onSearchAfterResetBtn();
 });
 
-const onSearchFildChange2 = function (e) {
+const onSearchAfterResetBtn = function (e) {
   const eventName = searchField.value.trim();
   fetchFromAPI.config.params.keyword = eventName;
 
