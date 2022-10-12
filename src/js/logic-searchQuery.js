@@ -3,8 +3,9 @@ import { getStartPageMarkup } from './start_page-render';
 import getTotalPages from '../js/get_total_pages';
 import { getCountriesFromEvents } from './filter_country';
 import { suppCountries } from './all_supp_countries';
+import { pagesVerification } from './pages_verification';
 
-import { getAnimation, removeListHidden, removeDiv} from './info-anim';
+import { getAnimation, removeListHidden, removeDiv } from './info-anim';
 
 import debounce from 'lodash.debounce';
 
@@ -34,7 +35,7 @@ const onSearchFildChange = function (e) {
       const result = response._embedded.events;
       cardList.innerHTML = '';
       getStartPageMarkup(result);
-      getTotalPages(response.page.totalPages);
+      getTotalPages(pagesVerification(response));
       getCountriesFromEvents(result);
       removeDiv(info);
     });
@@ -43,8 +44,8 @@ const onSearchFildChange = function (e) {
       countrySearch.value
     );
     fetchFromAPI.baseFetch().then(response => {
-      if(response.hasOwnProperty('_embedded') === false) {
-        getAnimation(response, info, cardList, cards, eventName, e);
+      if (response.hasOwnProperty('_embedded') === false) {
+        getAnimation(response, info, cardList, cards, eventName);
       }
 
       const eventList = response.page.totalElements;
@@ -60,7 +61,7 @@ const onSearchFildChange = function (e) {
 
       cardList.innerHTML = '';
       getStartPageMarkup(result);
-      getTotalPages(response.page.totalPages);
+      getTotalPages(pagesVerification(response));
       getCountriesFromEvents(result);
       removeDiv(info);
     });

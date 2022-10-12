@@ -1,4 +1,4 @@
-export function getAnimation(resp, elemDiv, elemList, elemBox, fromQuery, ev) {
+export function getAnimation(resp, elemDiv, elemList, elemBox, fromQuery) {
     if(resp.hasOwnProperty('_embedded') === false) {
         elemDiv.classList.remove('info--hidden');
       elemList.classList.add('cards__list--hidden');
@@ -6,7 +6,7 @@ export function getAnimation(resp, elemDiv, elemList, elemBox, fromQuery, ev) {
       elemBox.prepend(elemDiv);
       elemDiv.textContent = `Ooops...we could not find any matches for '${fromQuery}'. Please, try again.`;
       
-      ev.target.value = '';
+    //   ev.target.value = '';
       return;
   } 
 }

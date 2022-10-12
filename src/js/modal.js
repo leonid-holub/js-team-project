@@ -60,6 +60,10 @@ export function onCardModalOpen(ev) {
     fetchInfo.baseFetch().then(response => {
       const wholeInfo = response._embedded.events[0];
 
+      const imagesSortByWidth = wholeInfo.images.sort(
+        (a, b) => b.width - a.width
+      );
+
       let infoPlaceHolder = '';
       if (wholeInfo.info === undefined) {
         infoPlaceHolder = `Sorry, there is no info about this event.`;
@@ -83,8 +87,8 @@ export function onCardModalOpen(ev) {
 
       let pricesList = [];
       if (wholeInfo._embedded.attractions === undefined) {
-        refs.imageS.setAttribute('src', `${wholeInfo.images[4].url}`);
-        refs.imageL.setAttribute('src', `${wholeInfo.images[4].url}`);
+        refs.imageS.setAttribute('src', `${imagesSortByWidth[0].url}`);
+        refs.imageL.setAttribute('src', `${imagesSortByWidth[0].url}`);
         const emptyModalMarkup = `<div class="modal__text-three"><div class="modal__text-two">
       <div class="modal__text-block">
         <h3 class="modal__title">Info</h3>
@@ -114,8 +118,8 @@ export function onCardModalOpen(ev) {
         `);
       }
 
-      refs.imageS.setAttribute('src', `${wholeInfo.images[4].url}`);
-      refs.imageL.setAttribute('src', `${wholeInfo.images[4].url}`);
+      refs.imageS.setAttribute('src', `${imagesSortByWidth[0].url}`);
+      refs.imageL.setAttribute('src', `${imagesSortByWidth[0].url}`);
       const markup = `<div class="modal__text-three"><div class="modal__text-two">
       <div class="modal__text-block">
         <h3 class="modal__title">Info</h3>
