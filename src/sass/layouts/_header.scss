@@ -145,6 +145,8 @@
     &:hover + .header__cancel-circle,
     &:focus + .header__cancel-circle {
       fill: $accent-txt-color;
+      cursor: pointer;
+      z-index: 100;
     }
     &:hover + .header__icon-search,
     &:focus + .header__icon-search {

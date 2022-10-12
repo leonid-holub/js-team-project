@@ -12,7 +12,7 @@ const DELAY_MS = 500;
 
 const refs = {
   form: document.querySelector('.header__form'),
-
+  resetCountries: document.querySelector('.header__cancel-circle'),
   allCountries: document.querySelectorAll('#countries option'),
   countryListFromOption: document.querySelector('.header__form #countries'),
 
@@ -42,7 +42,7 @@ function onCountrySearchChange(e) {
 
   fetchCountries.baseFetch().then(response => {
     getAnimation(response, info, cardList, cards, query, e);
-
+    refs.resetCountries.classList.remove('is-hidden');
     if (response.hasOwnProperty('_embedded') === false) {
       e.target.value = '';
       return;
@@ -97,21 +97,21 @@ function onFormChange(e) {
   let valueFromEvent = '';
   let valueFromCountry = '';
 
-  if(e.target.name === 'event') {
+  if (e.target.name === 'event') {
     searchFromEvent = e.target;
     valueFromEvent = searchFromEvent.value;
   }
-  
-  if(e.target.name === 'country') {
+
+  if (e.target.name === 'country') {
     searchFromCountry = e.target;
     valueFromCountry = searchFromCountry.value;
   }
 
-  if(valueFromEvent !== '' ) {
+  if (valueFromEvent !== '') {
     removeDiv(info);
   }
 
-  if(valueFromCountry !== '') {
+  if (valueFromCountry !== '') {
     removeDiv(info);
   }
 }
