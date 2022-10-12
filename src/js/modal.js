@@ -183,10 +183,11 @@ export function onCardModalOpen(ev) {
             allEvents[i].dataEvents === wholeInfo.dates.start.localDate &&
             allEvents[i].city === wholeInfo._embedded.venues[0].city.name
           ) {
-            addToLocalStorage.setAttribute('disabled', 'disabled');
+            console.log('Fix');
+            return addToLocalStorage.setAttribute('disabled', 'disabled');
           } else if (addToLocalStorage.hasAttribute('disabled')) {
             localStorage.setItem('Event', JSON.stringify(objEvent));
-            addToLocalStorage.removeAttribute('disabled');
+            return addToLocalStorage.removeAttribute('disabled');
           } else {
             localStorage.setItem('Event', JSON.stringify(objEvent));
           }
