@@ -5,7 +5,10 @@ import { defaultCountryDataList } from './datalist_countries';
 import { getAnimation, removeListHidden, removeDiv } from './info-anim';
 import { suppCountries } from './all_supp_countries';
 import { pagesVerification } from './pages_verification';
+import debounce from 'lodash.debounce';
 const fetchCountries = new FetchService();
+
+const DELAY_MS = 500;
 
 const refs = {
   form: document.querySelector('.header__form'),
@@ -83,5 +86,32 @@ export function getCountriesFromEvents(events) {
 
   if (refs.countrySearch !== '') {
     return;
+  }
+}
+
+refs.form.addEventListener('input', debounce(onFormChange, DELAY_MS));
+
+function onFormChange(e) {
+  let searchFromEvent = null;
+  let searchFromCountry = null;
+  let valueFromEvent = '';
+  let valueFromCountry = '';
+
+  if(e.target.name === 'event') {
+    searchFromEvent = e.target;
+    valueFromEvent = searchFromEvent.value;
+  }
+  
+  if(e.target.name === 'country') {
+    searchFromCountry = e.target;
+    valueFromCountry = searchFromCountry.value;
+  }
+
+  if(valueFromEvent !== '' ) {
+    removeDiv(info);
+  }
+
+  if(valueFromCountry !== '') {
+    removeDiv(info);
   }
 }
