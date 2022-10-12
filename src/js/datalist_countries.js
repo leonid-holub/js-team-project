@@ -1,7 +1,7 @@
 import { suppCountries } from './all_supp_countries';
 
 const queryCountry = document.querySelector('.header__form #countries');
-const defaultCountryDataList = function () {
+export const defaultCountryDataList = function () {
   const countriesList = suppCountries.getKeysAndValues();
   countriesList.forEach((elem, index) => {
     queryCountry.insertAdjacentHTML(
