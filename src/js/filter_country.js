@@ -40,6 +40,7 @@ function onCountrySearchChange(e) {
     getAnimation(response, info, cardList, cards, query, e);
 
     if (response.hasOwnProperty('_embedded') === false) {
+      e.target.value = '';
       return;
     }
 

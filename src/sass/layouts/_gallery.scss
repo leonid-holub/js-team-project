@@ -255,7 +255,8 @@
   padding: 15px;
 
   background-color: rgba(236, 113, 215, 0.641);
-  box-shadow: 1px 1px 5px 2px $accent-txt-color;
+
+  box-shadow: 1px 1px 5px 4px $accent-txt-color, 1px 1px 5px 3px $main-text-color;
 
   border-radius: 50px 0px;
 
@@ -263,7 +264,6 @@
   font-size: 12px;
   line-height: 18px;
 
-  transition: transform 300ms;
 
   animation-name: cardsAppearanse;
   animation-duration: 1500ms;
@@ -273,6 +273,8 @@
     min-height: 80px;
     font-size: 16px;
     line-height: 25px;
+
+    box-shadow: 1px 1px 7px 5px $accent-txt-color, 1px 1px 7px 4px $main-text-color;
   }
 
   @media screen and (min-width: 1280px) {
@@ -280,10 +282,7 @@
     min-height: 100px;
     font-size: 20px;
     line-height: 35px;
-  }
 
-  &:hover {
-    transform: scale(1.1);
-  box-shadow: 1px 1px 3px 5px $main-text-color;
+    box-shadow: 1px 1px 9px 6px $accent-txt-color, 1px 1px 12px 5px $main-text-color;
   }
 }

@@ -44,7 +44,7 @@ const onSearchFildChange = function (e) {
     );
     fetchFromAPI.baseFetch().then(response => {
       if(response.hasOwnProperty('_embedded') === false) {
-        getAnimation(response, info, cardList, cards, eventName, e);
+        getAnimation(response, info, cardList, cards, eventName);
       }
 
       const eventList = response.page.totalElements;
