@@ -177,16 +177,17 @@ export function onCardModalOpen(ev) {
           localStorage.setItem('Event', JSON.stringify(objEvent));
         }
       } else {
-        for (let i = 0; i < allEvents.length; i += 1) {
+        for (let i = 0; i <= allEvents.length; i += 1) {
           if (
             allEvents[i].name === wholeInfo._embedded.attractions[0].name &&
             allEvents[i].dataEvents === wholeInfo.dates.start.localDate &&
             allEvents[i].city === wholeInfo._embedded.venues[0].city.name
           ) {
-            addToLocalStorage.setAttribute('disabled', 'disabled');
+            console.log('Fix');
+            return addToLocalStorage.setAttribute('disabled', 'disabled');
           } else if (addToLocalStorage.hasAttribute('disabled')) {
             localStorage.setItem('Event', JSON.stringify(objEvent));
-            addToLocalStorage.removeAttribute('disabled');
+            return addToLocalStorage.removeAttribute('disabled');
           } else {
             localStorage.setItem('Event', JSON.stringify(objEvent));
           }
