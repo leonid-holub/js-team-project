@@ -35,7 +35,27 @@ function onCloseModalBasket() {
   modalFavorites.classList.add('is-hidden');
 }
 
+<<<<<<< HEAD
+modalFavorites.addEventListener('click', closeModalFavBack);
+function closeModalFavBack(ev) {
+  if (ev.target === modalFavorites) {
+    modalFavorites.classList.add('is-hidden');
+  } else {
+    return;
+  }
+}
+
+window.addEventListener('keydown', closeModalFavKey);
+function closeModalFavKey(ev) {
+  if (ev.code === 'Escape') {
+    modalFavorites.classList.add('is-hidden');
+  }
+}
+
+function onAddToFavorites() {
+=======
 function onAddToFavorites(e) {
+>>>>>>> dev
   saveBasketOnLocalStorage();
   e.currentTarget.setAttribute('disabled', 'disabled');
 }

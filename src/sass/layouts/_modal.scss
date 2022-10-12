@@ -37,7 +37,7 @@
     padding-top: 80px;
     padding-bottom: 100px;
     min-width: 280px;
-    height: 952px;
+    min-height: 952px;
     text-align: center;
     border-radius: 150px 0px;
     transform: translate(-50%, -39%) scale(1);
@@ -49,7 +49,7 @@
     padding-top: 32px;
     padding-bottom: 48px;
     width: 704px;
-    height: 780px;
+    min-height: 780px;
     transform: translate(-50%, -46%) scale(1);
   }
 
@@ -59,7 +59,7 @@
     padding-top: 47px;
     padding-bottom: 60px;
     width: 1034px;
-    height: 918px;
+    min-height: 918px;
     transform: translate(-50%, -40%) scale(1);
   }
 
@@ -105,16 +105,17 @@
   background-color: transparent;
   color: $modal-accent-color;
   border: none;
+
+  transition: color $anim;
+
+  &:hover,
+  &:focus {
+    color: $accent-txt-color;
+  }
 }
 
 .modal-btn__close-icon {
   fill: currentColor;
-  transition: fill $anim;
-
-  &:hover,
-  &:focus {
-    fill: $accent-txt-color;
-  }
 }
 
 .modal__img-s {
@@ -231,6 +232,13 @@
   @media screen and (min-width: 768px) {
     display: flex;
     gap: 60;
+    flex-wrap: wrap;
+  }
+}
+
+.modal__thumb-item {
+  @media screen and (min-width: 768px) {
+    flex-basis: calc((100% - 60px) / 2);
   }
 }
 
@@ -261,6 +269,9 @@
 .text-flex {
   display: flex;
   align-items: center;
+  @media screen and (max-width: 767px) {
+    justify-content: center;
+  }
 }
 
 .modal__btn {
@@ -274,6 +285,7 @@
 .modal__link-buy {
   display: inline-block;
   margin-top: 16px;
+  margin-bottom: 10px;
   padding: 9px 19px 11px;
   text-decoration: none;
   color: $main-text-color;
@@ -291,10 +303,18 @@
   }
 }
 
+.modal__btns-block {
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+}
+
 .modal__btn-more {
   display: block;
   padding: 10px 15px;
-  margin: 0 auto;
   color: $modal-accent-color;
   background-color: transparent;
   border: 1px solid $modal-accent-color;
@@ -303,10 +323,42 @@
     padding: 10px 3px;
   }
 
+  @media screen and (max-width: 1279px) {
+    margin: 0 auto;
+  }
+
   transition: border-color $anim;
 
   &:hover,
   &:focus {
     border-color: $accent-txt-color;
   }
+}
+
+.modal-btn__fav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  color: $modal-accent-color;
+  background-color: transparent;
+  border: 1px solid $modal-accent-color;
+
+  @media screen and (max-width: 1279px) {
+    margin-top: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  transition: border-color $anim;
+
+  &:hover,
+  &:focus {
+    border-color: $accent-txt-color;
+  }
+}
+
+.modal-btn__fav-icon {
+  margin-left: 8px;
+  fill: $accent-txt-color;
 }
