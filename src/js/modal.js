@@ -70,13 +70,30 @@ export function onCardModalOpen(ev) {
       let datePlaceHolder = '';
       if (wholeInfo.dates.start.localTime === undefined) {
         datePlaceHolder = ` `;
-      } else if (wholeInfo.dates.start.localTime !== undefined && wholeInfo.dates.timezone === undefined) {
+      } else if (
+        wholeInfo.dates.start.localTime !== undefined &&
+        wholeInfo.dates.timezone === undefined
+      ) {
         datePlaceHolder = `${wholeInfo.dates.start.localTime.slice(0, 5)}`;
       } else {
-        datePlaceHolder = `${wholeInfo.dates.start.localTime.slice(0, 5)} (${wholeInfo.dates.timezone})`;
-      };
+        datePlaceHolder = `${wholeInfo.dates.start.localTime.slice(0, 5)} (${
+          wholeInfo.dates.timezone
+        })`;
+      }
 
       let pricesList = [];
+      if (wholeInfo._embedded.attractions === undefined) {
+        refs.imageS.setAttribute('src', `${wholeInfo.images[4].url}`);
+        refs.imageL.setAttribute('src', `${wholeInfo.images[4].url}`);
+        const emptyModalMarkup = `<div class="modal__text-three"><div class="modal__text-two">
+      <div class="modal__text-block">
+        <h3 class="modal__title">Info</h3>
+        <p class="modal__text modal__info">${infoPlaceHolder}</p>
+      </div>`;
+        refs.floatText.insertAdjacentHTML('afterbegin', emptyModalMarkup);
+        document.querySelector('.modal__btn').classList.add('is-hidden');
+        return;
+      }
       if (wholeInfo.priceRanges !== undefined) {
         for (let i = 0; i < wholeInfo.priceRanges.length; i++) {
           let pricesItem = `<li class="modal__thumb-item">
