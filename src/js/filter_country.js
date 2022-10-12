@@ -23,10 +23,6 @@ const refs = {
 };
 const cardList = document.querySelector('.cards__list');
 const cards = document.querySelector('.cards');
-//   cardList: document.querySelector('.cards__list'),
-
-//   pagination: document.querySelector('.pagination'),
-// ;
 
 const allOptions = refs.countryListFromOption.childNodes;
 const info = document.createElement('div');
