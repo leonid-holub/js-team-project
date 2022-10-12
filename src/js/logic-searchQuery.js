@@ -5,7 +5,11 @@ import { getCountriesFromEvents } from './filter_country';
 import { suppCountries } from './all_supp_countries';
 import { pagesVerification } from './pages_verification';
 
-import { getAnimation, removeListHidden, removeDiv } from './info-anim';
+import {
+  getAnimationEventSearch,
+  removeListHidden,
+  removeDiv,
+} from './info-anim';
 
 import debounce from 'lodash.debounce';
 
@@ -23,7 +27,7 @@ export const onSearchFildChange = function (e) {
 
   if (countrySearch.value.trim() === '') {
     fetchFromAPI.baseFetch().then(response => {
-      getAnimation(response, info, cardList, cards, eventName, e);
+      getAnimationEventSearch(response, info, cardList, cards, eventName, e);
 
       const eventList = response.page.totalElements;
 
@@ -45,7 +49,7 @@ export const onSearchFildChange = function (e) {
     );
     fetchFromAPI.baseFetch().then(response => {
       if (response.hasOwnProperty('_embedded') === false) {
-        getAnimation(response, info, cardList, cards, eventName);
+        getAnimationEventSearch(response, info, cardList, cards, eventName);
       }
 
       const eventList = response.page.totalElements;

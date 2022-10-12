@@ -35,26 +35,39 @@ refs.countrySearch.addEventListener('change', onCountrySearchChange);
 
 function onCountrySearchChange(e) {
   const query = e.target.value.trim();
-  let countryCode = suppCountries.getKeyForValues(refs.countrySearch.value);
+  if (suppCountries.getKeyForValues(refs.countrySearch.value)) {
+    let countryCode = suppCountries.getKeyForValues(refs.countrySearch.value);
 
-  fetchCountries.config.params.countryCode = countryCode;
-  fetchCountries.config.params.keyword = refs.searchField.value;
+    fetchCountries.config.params.countryCode = countryCode;
+    fetchCountries.config.params.keyword = refs.searchField.value;
 
-  fetchCountries.baseFetch().then(response => {
-    refs.resetCountries.classList.remove('is-hidden');
-    getAnimation(response, info, cardList, cards, query, e);
-    if (response.hasOwnProperty('_embedded') === false) {
-      e.target.value = '';
-      return;
-    }
+    fetchCountries.baseFetch().then(response => {
+      refs.resetCountries.classList.remove('is-hidden');
+      getAnimation(response, info, cardList, cards, query, e);
+      if (response.hasOwnProperty('_embedded') === false) {
+        e.target.value = '';
+        return;
+      }
 
-    removeListHidden(cardList);
-    const result = response._embedded.events;
-    cardList.innerHTML = '';
-    getStartPageMarkup(result);
-    getTotalPages(pagesVerification(response));
-    removeDiv(info);
-  });
+      removeListHidden(cardList);
+      const result = response._embedded.events;
+      cardList.innerHTML = '';
+      getStartPageMarkup(result);
+      getTotalPages(pagesVerification(response));
+      removeDiv(info);
+    });
+  } else {
+    let countryCode = refs.countrySearch.value;
+    fetchCountries.config.params.countryCode = countryCode;
+    fetchCountries.config.params.keyword = refs.searchField.value;
+    fetchCountries.baseFetch().then(response => {
+      getAnimation(response, info, cardList, cards, query, e);
+      if (response.hasOwnProperty('_embedded') === false) {
+        e.target.value = '';
+        return;
+      }
+    });
+  }
 }
 
 export function getCountriesFromEvents(events) {
