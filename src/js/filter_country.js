@@ -2,6 +2,7 @@ import { FetchService } from './base_fetch';
 import { getStartPageMarkup } from './start_page-render';
 import { defaultCountryDataList } from './datalist_countries';
 import { getAnimation, removeListHidden, removeDiv } from './info-anim';
+import { suppCountries } from './all_supp_countries';
 const fetchCountries = new FetchService();
 
 const refs = {
@@ -29,10 +30,8 @@ refs.countrySearch.addEventListener('change', onCountrySearchChange);
 
 function onCountrySearchChange(e) {
   const query = e.target.value.trim();
-  let countryCode = null;
-
-  fetchCountries.config.params.countryCode = countryCode;
-  fetchCountries.config.params.keyword = refs.searchField.value;
+  let countryCode = suppCountries.getKeyForValues(
+    refs.countrySearch.value);
 
   fetchCountries.config.params.countryCode = countryCode;
   fetchCountries.config.params.keyword = refs.searchField.value;
