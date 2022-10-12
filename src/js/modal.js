@@ -160,9 +160,7 @@ export function onCardModalOpen(ev) {
         urlBuyTicket: wholeInfo.url,
         dataEvents: wholeInfo.dates.start.localDate,
       };
-      // const addToLocalStorage = document.querySelector(
-      //   '[data-add-on-local-storage]'
-      // );
+
       const allEvents = JSON.parse(localStorage.getItem('Events'));
       const addToLocalStorage = document.querySelector(
         '[data-modal-favorites-add]'
@@ -185,11 +183,8 @@ export function onCardModalOpen(ev) {
             allEvents[i].dataEvents === wholeInfo.dates.start.localDate &&
             allEvents[i].city === wholeInfo._embedded.venues[0].city.name
           ) {
-            console.log(addToLocalStorage);
             addToLocalStorage.setAttribute('disabled', 'disabled');
-            
           } else if (addToLocalStorage.hasAttribute('disabled')) {
-            console.log(addToLocalStorage.hasAttribute('disabled'));
             localStorage.setItem('Event', JSON.stringify(objEvent));
             addToLocalStorage.removeAttribute('disabled');
           } else {
