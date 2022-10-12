@@ -4,6 +4,7 @@ import getTotalPages from '../js/get_total_pages';
 import { defaultCountryDataList } from './datalist_countries';
 import { getAnimation, removeListHidden, removeDiv } from './info-anim';
 import { suppCountries } from './all_supp_countries';
+import { pagesVerification } from './pages_verification';
 const fetchCountries = new FetchService();
 
 const refs = {
@@ -48,7 +49,7 @@ function onCountrySearchChange(e) {
     const result = response._embedded.events;
     cardList.innerHTML = '';
     getStartPageMarkup(result);
-    getTotalPages(response.page.totalPages);
+    getTotalPages(pagesVerification(response));
     removeDiv(info);
   });
 }
