@@ -310,3 +310,58 @@
     padding-left: 16px;
   }
 }
+
+.header__auth-btns {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+
+  display: flex;
+  gap: 15px;
+
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    flex-direction: column;
+  }
+}
+
+.header__btn {
+  width: 40px;
+  font-weight: 600;
+  color: $accent-txt-color;
+  background-color: transparent;
+  border: 1px solid $accent-txt-color;
+  border-radius: 4px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    height: 10px;
+  }
+}
+
+.header__btn-log {
+  padding: 10px 10px;
+  &:hover,
+  &:focus {
+    color: $main-text-color;
+    border-color: $main-text-color;
+    text-shadow: 1px 1px 3px $accent-txt-color;
+    box-shadow: 1px 1px 3px $accent-txt-color;
+  }
+}
+
+.header__btn-sign {
+  padding: 10px 10px;
+  background-color: rgba(255, 255, 255, 0.85);
+  &:hover,
+  &:focus {
+    color: $main-text-color;
+    // border-color: $main-text-color;
+    background-color: $accent-txt-color;
+    text-shadow: 1px 1px 3px $main-text-color;
+    box-shadow: 1px 1px 3px $accent-txt-color;
+  }
+}
+
+.header__btn-fav {
+  background-color: $accent-txt-color;
+  padding: 0;
+  color: black;
+}
