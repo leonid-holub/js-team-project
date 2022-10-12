@@ -1,5 +1,3 @@
-import { closeModalBtn } from '../modal';
-import { saveBasketOnLocalStorage } from './save_basket_on_local_storage';
 import { onDeleteBtn } from './modal_shopping_basket';
 
 import { createBasketEvents } from './create_bascket_events';
