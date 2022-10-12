@@ -117,7 +117,7 @@ export function onCardModalOpen(ev) {
         </li>
         `);
       }
-
+      document.querySelector('.modal__btn').classList.remove('is-hidden');
       refs.imageS.setAttribute('src', `${imagesSortByWidth[0].url}`);
       refs.imageL.setAttribute('src', `${imagesSortByWidth[0].url}`);
       const markup = `<div class="modal__text-three"><div class="modal__text-two">
