@@ -22,11 +22,12 @@ export function getTotal(total) {
 function onBtnClick(e) {
   e.preventDefault();
   btnValue = Number(e.target.textContent);
-  paginationFetch(btnValue);
+
   smoothScroll();
   if (!e.target.hasAttribute('btn-pagination')) {
     return;
   }
+  paginationFetch(btnValue);
   removeIsActive();
   if (pageBtns.length <= 4) {
     return addIsActive();
