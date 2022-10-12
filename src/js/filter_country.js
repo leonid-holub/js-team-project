@@ -1,5 +1,6 @@
 import { FetchService } from './base_fetch';
 import { getStartPageMarkup } from './start_page-render';
+import getTotalPages from '../js/get_total_pages';
 import { defaultCountryDataList } from './datalist_countries';
 import { getAnimation, removeListHidden, removeDiv } from './info-anim';
 import { suppCountries } from './all_supp_countries';
@@ -30,8 +31,7 @@ refs.countrySearch.addEventListener('change', onCountrySearchChange);
 
 function onCountrySearchChange(e) {
   const query = e.target.value.trim();
-  let countryCode = suppCountries.getKeyForValues(
-    refs.countrySearch.value);
+  let countryCode = suppCountries.getKeyForValues(refs.countrySearch.value);
 
   fetchCountries.config.params.countryCode = countryCode;
   fetchCountries.config.params.keyword = refs.searchField.value;
@@ -46,7 +46,9 @@ function onCountrySearchChange(e) {
 
     removeListHidden(cardList);
     const result = response._embedded.events;
+    cardList.innerHTML = '';
     getStartPageMarkup(result);
+    getTotalPages(response.page.totalPages);
     removeDiv(info);
   });
 }
