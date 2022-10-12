@@ -142,6 +142,12 @@
       border: 1px solid $accent-txt-color;
       outline: 1px solid $accent-txt-color;
     }
+    &:hover + .header__cancel-circle,
+    &:focus + .header__cancel-circle {
+      fill: $accent-txt-color;
+      cursor: pointer;
+      z-index: 100;
+    }
     &:hover + .header__icon-search,
     &:focus + .header__icon-search {
       fill: $accent-txt-color;
@@ -177,6 +183,14 @@
     right: 32px;
     fill: $placeholder-txt-color;
   }
+
+  &__cancel-circle {
+    position: absolute;
+    top: 14px;
+    left: 13px;
+    fill: $placeholder-txt-color;
+  }
+
   &__btn-country {
     position: absolute;
     top: 14px;
