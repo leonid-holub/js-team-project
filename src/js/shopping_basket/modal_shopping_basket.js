@@ -17,7 +17,6 @@ let basketLocalStorage;
 openModalFavorites.addEventListener('click', onOpenModalFavorites);
 closeModalFavorites.addEventListener('click', onCloseModalBasket);
 addToFavorites.addEventListener('click', onAddToFavorites);
-console.log(myFavorites);
 myFavorites.addEventListener('click', onDeleteBtn);
 
 export function onDeleteBtn(e) {
@@ -33,6 +32,22 @@ export function onDeleteBtn(e) {
 
 function onCloseModalBasket() {
   modalFavorites.classList.add('is-hidden');
+}
+
+modalFavorites.addEventListener('click', closeModalFavBack);
+function closeModalFavBack(ev) {
+  if (ev.target === modalFavorites) {
+    modalFavorites.classList.add('is-hidden');
+  } else {
+    return;
+  }
+}
+
+window.addEventListener('keydown', closeModalFavKey);
+function closeModalFavKey(ev) {
+  if (ev.code === 'Escape') {
+    modalFavorites.classList.add('is-hidden');
+  }
 }
 
 function onAddToFavorites() {

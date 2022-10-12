@@ -13,6 +13,9 @@
     color: $accent-txt-color;
     font-weight: 800;
     font-size: 35px;
+    @media screen and (max-width: 767px) {
+      font-size: 28px;
+    }
   }
 
   &__info {
@@ -188,5 +191,34 @@
   &:hover,
   &:focus {
     fill: $accent-txt-color;
+  }
+}
+
+.modal-favorites__btn-del {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  color: $accent-txt-color;
+  border: none;
+  background-color: transparent;
+  transition: color $anim;
+
+  &:hover,
+  &:focus {
+    color: $modal-accent-color;
+    background-color: transparent;
+  }
+}
+
+.btn-del-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  @media screen and (min-width: 1280px) {
+    width: 30px;
+    height: 30px;
   }
 }
