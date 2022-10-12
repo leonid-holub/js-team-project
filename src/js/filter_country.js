@@ -2,6 +2,7 @@ import { FetchService } from './base_fetch';
 import { getStartPageMarkup } from './start_page-render';
 import { defaultCountryDataList } from './datalist_countries';
 import { getAnimation, removeListHidden, removeDiv } from './info-anim';
+import { suppCountries } from './all_supp_countries';
 const fetchCountries = new FetchService();
 
 const refs = {
@@ -29,35 +30,8 @@ refs.countrySearch.addEventListener('change', onCountrySearchChange);
 
 function onCountrySearchChange(e) {
   const query = e.target.value.trim();
-  let countryCode = null;
-
-  fetchCountries.config.params.countryCode = countryCode;
-  fetchCountries.config.params.keyword = refs.searchField.value;
-
-  fetchCountries
-    .baseFetch()
-    .then(response => {
-      if (response.hasOwnProperty('_embedded') === false) {
-        refs.cardList.classList.add('cards__list--hidden');
-        e.target.value = '';
-
-        throw new Error(
-          `Ooops...there are no events in ${query}. Please, choose another country.`
-        );
-      }
-      info.remove();
-
-      const result = response._embedded.events;
-
-      refs.cardList.classList.remove('cards__list--hidden');
-
-      getStartPageMarkup(result);
-    })
-    .catch(e => {
-      info.classList.add('info');
-      refs.cards.prepend(info);
-      info.textContent = e.message;
-    });
+  let countryCode = suppCountries.getKeyForValues(
+    refs.countrySearch.value);
 
   fetchCountries.config.params.countryCode = countryCode;
   fetchCountries.config.params.keyword = refs.searchField.value;
