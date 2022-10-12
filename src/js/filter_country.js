@@ -41,8 +41,8 @@ function onCountrySearchChange(e) {
   fetchCountries.config.params.keyword = refs.searchField.value;
 
   fetchCountries.baseFetch().then(response => {
-    getAnimation(response, info, cardList, cards, query, e);
     refs.resetCountries.classList.remove('is-hidden');
+    getAnimation(response, info, cardList, cards, query, e);
     if (response.hasOwnProperty('_embedded') === false) {
       e.target.value = '';
       return;

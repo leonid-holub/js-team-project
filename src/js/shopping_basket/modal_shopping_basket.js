@@ -17,7 +17,6 @@ let basketLocalStorage;
 openModalFavorites.addEventListener('click', onOpenModalFavorites);
 closeModalFavorites.addEventListener('click', onCloseModalBasket);
 addToFavorites.addEventListener('click', onAddToFavorites);
-console.log(myFavorites);
 myFavorites.addEventListener('click', onDeleteBtn);
 
 export function onDeleteBtn(e) {
