@@ -17,7 +17,7 @@ const cards = document.querySelector('.cards');
 
 const info = document.createElement('div');
 
-const onSearchFildChange = function (e) {
+export const onSearchFildChange = function (e) {
   const eventName = e.target.value.trim();
   fetchFromAPI.config.params.keyword = eventName;
 
