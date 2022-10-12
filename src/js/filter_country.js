@@ -34,31 +34,6 @@ function onCountrySearchChange(e) {
   fetchCountries.config.params.countryCode = countryCode;
   fetchCountries.config.params.keyword = refs.searchField.value;
 
-  fetchCountries
-    .baseFetch()
-    .then(response => {
-      if (response.hasOwnProperty('_embedded') === false) {
-        refs.cardList.classList.add('cards__list--hidden');
-        e.target.value = '';
-
-        throw new Error(
-          `Ooops...there are no events in ${query}. Please, choose another country.`
-        );
-      }
-      info.remove();
-
-      const result = response._embedded.events;
-
-      refs.cardList.classList.remove('cards__list--hidden');
-
-      getStartPageMarkup(result);
-    })
-    .catch(e => {
-      info.classList.add('info');
-      refs.cards.prepend(info);
-      info.textContent = e.message;
-    });
-
   fetchCountries.config.params.countryCode = countryCode;
   fetchCountries.config.params.keyword = refs.searchField.value;
 
