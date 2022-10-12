@@ -83,10 +83,15 @@ export function onCardModalOpen(ev) {
 
       let pricesList = [];
       if (wholeInfo._embedded.attractions === undefined) {
-        const emptyModalMarkup = refs.floatText.insertAdjacentHTML(
-          'afterbegin',
-          emptyModalMarkup
-        );
+        refs.imageS.setAttribute('src', `${wholeInfo.images[4].url}`);
+        refs.imageL.setAttribute('src', `${wholeInfo.images[4].url}`);
+        const emptyModalMarkup = `<div class="modal__text-three"><div class="modal__text-two">
+      <div class="modal__text-block">
+        <h3 class="modal__title">Info</h3>
+        <p class="modal__text modal__info">${infoPlaceHolder}</p>
+      </div>`;
+        refs.floatText.insertAdjacentHTML('afterbegin', emptyModalMarkup);
+        document.querySelector('.modal__btn').classList.add('is-hidden');
         return;
       }
       if (wholeInfo.priceRanges !== undefined) {
