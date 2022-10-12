@@ -9,4 +9,6 @@ import './js/more_from_this_autor';
 import './js/pagination';
 import './js/filter_country';
 import './js/animation-modal';
+import './js/shopping_basket/modal_shopping_basket';
 import './js/burger-menu';
+

@@ -1,22 +1,14 @@
 import { closeModalBtn } from '../modal';
 import { saveBasketOnLocalStorage } from './save_basket_on_local_storage';
-import { totalPrice } from './basket_total_price';
+import { onDeleteBtn } from './modal_shopping_basket';
+
 import { createBasketEvents } from './create_bascket_events';
 
-const modalBasket = document.querySelector('[data-modal-shopping-basket]');
-const buyTicketBtn = document.querySelector('.modal-shopping-basket__btn-bye');
+const modalFavorites = document.querySelector('[data-modal-favorites]');
 
-buyTicketBtn.addEventListener('click', onBuyTicket);
-
-export function onOpenModalBasket() {
-  closeModalBtn();
-  saveBasketOnLocalStorage();
+export function onOpenModalFavorites() {
+  modalFavorites.classList.remove('is-hidden');
   createBasketEvents();
-  const allPrice = document.querySelectorAll('[data-basket-price]');
-  totalPrice(allPrice);
-  modalBasket.classList.remove('is-hidden');
-}
-function onBuyTicket() {
-  localStorage.removeItem('Events');
-  modalBasket.classList.add('is-hidden');
+  const myFavorites = document.querySelector('.modal-favorites__info');
+  myFavorites.addEventListener('click', onDeleteBtn);
 }

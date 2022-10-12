@@ -152,6 +152,20 @@ export function onCardModalOpen(ev) {
         </ul>`;
 
       refs.floatText.insertAdjacentHTML('afterbegin', markup);
+      const objEvent = {
+        imgEvent: wholeInfo.images[4].url,
+        name: wholeInfo._embedded.attractions[0].name,
+        country: wholeInfo._embedded.venues[0].country.name,
+        city: wholeInfo._embedded.venues[0].city.name,
+        urlBuyTicket: wholeInfo.url,
+        dataEvents: wholeInfo.dates.start.localDate,
+      };
+      localStorage.setItem('Event', JSON.stringify(objEvent));
+
+      const addToLocalStorage = document.querySelector(
+        '[data-add-on-local-storage]'
+      );
+      addToLocalStorage.addEventListener('click', onOpenModalBasket);
     });
   }
 }
