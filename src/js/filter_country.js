@@ -57,6 +57,7 @@ function onCountrySearchChange(e) {
       removeDiv(info);
     });
   } else {
+    removeDiv(info);
     let countryCode = refs.countrySearch.value;
     fetchCountries.config.params.countryCode = countryCode;
     fetchCountries.config.params.keyword = refs.searchField.value;
