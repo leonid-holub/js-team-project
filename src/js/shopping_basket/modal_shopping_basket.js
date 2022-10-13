@@ -6,7 +6,7 @@ const closeModalFavorites = document.querySelector(
   '[data-modal-favorites-close]'
 );
 const modalFavorites = document.querySelector('[data-modal-favorites]');
-const openModalFavorites = document.querySelector(
+const openModalFavorites = document.querySelectorAll(
   '[data-open-modal-favorites]'
 );
 const addToFavorites = document.querySelector('[data-modal-favorites-add]');
@@ -14,7 +14,8 @@ const myFavorites = document.querySelector('.modal-favorites__info');
 let allEvents = [];
 let basketLocalStorage;
 
-openModalFavorites.addEventListener('click', onOpenModalFavorites);
+openModalFavorites.forEach(btn => btn.addEventListener('click', onOpenModalFavorites));
+// openModalFavorites.addEventListener('click', onOpenModalFavorites);
 closeModalFavorites.addEventListener('click', onCloseModalBasket);
 addToFavorites.addEventListener('click', onAddToFavorites);
 
@@ -56,7 +57,6 @@ function closeModalFavKey(ev) {
 }
 
 function onAddToFavorites(e) {
-  console.log(e.currentTarget);
   saveBasketOnLocalStorage();
 
   e.currentTarget.setAttribute('disabled', 'disabled');
