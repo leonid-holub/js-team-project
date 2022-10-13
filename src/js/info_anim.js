@@ -2,12 +2,19 @@ import getTotalPages from './get_total_pages';
 
 export function getAnimation(resp, elemDiv, elemList, elemBox, fromQuery) {
   if (resp.hasOwnProperty('_embedded') === false) {
+    const wrapper = document.querySelector('.wrapper-info');
+    if (wrapper) {
+      wrapper.innerHTML = '';
+    }
     const resetCountriess = document.querySelector('.header__cancel-circle');
     elemDiv.classList.remove('info--hidden');
     elemList.classList.add('cards__list--hidden');
-    elemDiv.classList.add('info');
+    elemDiv.classList.add('wrapper-info');
+    const wrapperDivInfo = document.createElement('div');
+    elemDiv.prepend(wrapperDivInfo);
+    wrapperDivInfo.classList.add('info');
     elemBox.prepend(elemDiv);
-    elemDiv.textContent = `Ooops...we could not find any matches for '${fromQuery}'. Please, try again.`;
+    wrapperDivInfo.textContent = `Ooops...we could not find any matches for '${fromQuery}'. Please, try again.`;
     resetCountriess.classList.add('is-hidden');
     getTotalPages(1);
     return;
@@ -22,12 +29,19 @@ export function getAnimationEventSearch(
   fromQuery
 ) {
   if (resp.hasOwnProperty('_embedded') === false) {
+    const wrapper = document.querySelector('.wrapper-info');
+    if (wrapper) {
+      wrapper.innerHTML = '';
+    }
     const resetCountriess = document.querySelector('.header__cancel-circle');
     elemDiv.classList.remove('info--hidden');
     elemList.classList.add('cards__list--hidden');
-    elemDiv.classList.add('info');
+    elemDiv.classList.add('wrapper-info');
+    const wrapperDivInfo = document.createElement('div');
+    elemDiv.prepend(wrapperDivInfo);
+    wrapperDivInfo.classList.add('info');
     elemBox.prepend(elemDiv);
-    elemDiv.textContent = `Ooops...we could not find any matches for '${fromQuery}'. Please, try again.`;
+    wrapperDivInfo.textContent = `Ooops...we could not find any matches for '${fromQuery}'. Please, try again.`;
     getTotalPages(1);
     return;
   }
@@ -38,5 +52,6 @@ export function removeListHidden(elemList) {
 }
 
 export function removeDiv(elemDiv) {
+  elemDiv.innerHTML = '';
   elemDiv.remove();
 }

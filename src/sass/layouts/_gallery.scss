@@ -13,15 +13,14 @@
 @keyframes cardsHidden {
   0% {
     transform: translateY(0);
-      opacity: 0;
-    }
-  
-    100% {
-      transform: translateY(-15px);
-      opacity: 1;
-    }
+    opacity: 0;
   }
 
+  100% {
+    transform: translateY(-15px);
+    opacity: 1;
+  }
+}
 
 .gallery {
   background-color: $section-bckg-color;
@@ -256,14 +255,14 @@
 
   background-color: rgba(236, 113, 215, 0.641);
 
-  box-shadow: 1px 1px 5px 4px $accent-txt-color, 1px 1px 5px 3px $main-text-color;
+  box-shadow: 1px 1px 5px 4px $accent-txt-color,
+    1px 1px 5px 3px $main-text-color;
 
   border-radius: 50px 0px;
 
   text-align: center;
   font-size: 12px;
   line-height: 18px;
-
 
   animation-name: cardsAppearanse;
   animation-duration: 1500ms;
@@ -274,7 +273,8 @@
     font-size: 16px;
     line-height: 25px;
 
-    box-shadow: 1px 1px 7px 5px $accent-txt-color, 1px 1px 7px 4px $main-text-color;
+    box-shadow: 1px 1px 7px 5px $accent-txt-color,
+      1px 1px 7px 4px $main-text-color;
   }
 
   @media screen and (min-width: 1280px) {
@@ -283,6 +283,12 @@
     font-size: 20px;
     line-height: 35px;
 
-    box-shadow: 1px 1px 9px 6px $accent-txt-color, 1px 1px 12px 5px $main-text-color;
+    box-shadow: 1px 1px 9px 6px $accent-txt-color,
+      1px 1px 12px 5px $main-text-color;
   }
+}
+
+.wrapper-info {
+  padding-top: 10vh;
+  margin-bottom: 50vh;
 }

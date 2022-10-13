@@ -37,13 +37,13 @@ function onCountrySearchChange(e) {
     fetchCountries.config.params.countryCode = countryCode;
     fetchCountries.config.params.keyword = refs.searchField.value;
 
-  fetchCountries.baseFetch().then(response => {
-    refs.resetCountries.classList.remove('is-hidden');
-    getAnimation(response, info, cardList, cards, query, e);
-    if (response.hasOwnProperty('_embedded') === false) {
-      e.target.value = '';
-      return;
-    }
+    fetchCountries.baseFetch().then(response => {
+      refs.resetCountries.classList.remove('is-hidden');
+      getAnimation(response, info, cardList, cards, query, e);
+      if (response.hasOwnProperty('_embedded') === false) {
+        e.target.value = '';
+        return;
+      }
 
       removeListHidden(cardList);
       const result = response._embedded.events;
@@ -118,11 +118,11 @@ function onFormChange(e) {
     valueFromCountry = searchFromCountry.value;
   }
 
-  if (valueFromEvent !== '') {
-    removeDiv(info);
-  }
+  // if (valueFromEvent !== '') {
+  //   removeDiv(info);
+  // }
 
-  if (valueFromCountry !== '') {
-    removeDiv(info);
-  }
+  // if (valueFromCountry !== '') {
+  //   removeDiv(info);
+  // }
 }
