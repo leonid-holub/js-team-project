@@ -15,7 +15,6 @@ let allEvents = [];
 let basketLocalStorage;
 
 openModalFavorites.forEach(btn => btn.addEventListener('click', onOpenModalFavorites));
-// openModalFavorites.addEventListener('click', onOpenModalFavorites);
 closeModalFavorites.addEventListener('click', onCloseModalBasket);
 addToFavorites.addEventListener('click', onAddToFavorites);
 
@@ -31,7 +30,6 @@ export function onDeleteBtn(e) {
     allEvents.splice(e.target.getAttribute('data'), 1);
     localStorage.setItem('Events', JSON.stringify(allEvents));
     createBasketEvents();
-    console.log(e.target);
   }
   return;
 }

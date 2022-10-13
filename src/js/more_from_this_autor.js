@@ -1,6 +1,6 @@
 import { FetchService } from './base_fetch';
 import { closeModalBtn } from './modal';
-import { getStartPageMarkup } from './start_page-render';
+import { getStartPageMarkup } from './start_page_render';
 import { pagesVerification } from './pages_verification';
 import getTotalPages from '../js/get_total_pages';
 

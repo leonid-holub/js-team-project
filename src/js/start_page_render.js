@@ -1,6 +1,6 @@
 import { FetchService } from './base_fetch';
 import { onCardModalOpen } from './modal';
-import getTotalPages from '../js/get_total_pages';
+import getTotalPages from './get_total_pages';
 import { pagesVerification } from './pages_verification';
 
 const refs = {
