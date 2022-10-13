@@ -5,9 +5,10 @@ const binIcon = `<svg class="btn-del-icon" width="20" height="20" viewBox="0 0 4
 
 export function createBasketEvents() {
   const objEvent = JSON.parse(localStorage.getItem('Events'));
-  const newEvent = objEvent
-    .map(
-      (obj, index) => `<ul class="modal-favorites__info-events">
+  if (objEvent.length > 0) {
+    const newEvent = objEvent
+      .map(
+        (obj, index) => `<ul class="modal-favorites__info-events">
         <li class="modal-favorites__info-events-elem"><img class="modal-favorites__info-events-img" src="${obj.imgEvent}" alt="${obj.name}" width="60" ></img></li>
         <li class="modal-favorites__info-events-elem">${obj.name}</li>
         <li class="modal-favorites__info-events-elem">${obj.country}</li>
@@ -16,7 +17,12 @@ export function createBasketEvents() {
         <li class="modal-favorites__info-events-elem"><a class="modal-favorites__info-link" href="${obj.urlBuyTicket}">BUY TICKET</a></li>
         <li class="modal-favorites__info-events-elem"><button class="modal-favorites__btn-del" data="${index}" data-favorites-delete>${binIcon}</button></li>
       </ul>`
-    )
-    .join('');
-  favoritesEvents.innerHTML = newEvent;
+      )
+      .join('');
+    favoritesEvents.innerHTML = newEvent;
+  } else {
+    const withoutEvents =
+      '<p class="modal__favorites--clear">You currently have no favorite events</p>';
+    favoritesEvents.innerHTML = withoutEvents;
+  }
 }

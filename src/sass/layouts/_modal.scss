@@ -364,6 +364,7 @@
 .modal-btn__fav:disabled {
   color: silver;
   border: 1px solid silver;
+  cursor: auto;
 
   & .modal-btn__fav-icon {
     fill: silver;
