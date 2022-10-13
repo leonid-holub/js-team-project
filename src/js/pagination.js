@@ -3,7 +3,7 @@ import finalPageBtn from '../js/final_page_btn';
 import updatePageBtn from '../js/update_page_btn';
 import endPageBtn from '../js/end_page_btn';
 import paginationFetch from './pagination_fetch';
-import { smoothScroll } from './smoothScroll';
+import { smoothScroll } from './smooth_scroll';
 const paginationMenu = document.querySelector('[data-pagination]');
 let pageBtns = document.querySelectorAll('[btn-pagination]');
 

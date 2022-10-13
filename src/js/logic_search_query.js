@@ -1,6 +1,6 @@
 import { FetchService } from './base_fetch';
-import { getStartPageMarkup } from './start_page-render';
-import getTotalPages from '../js/get_total_pages';
+import { getStartPageMarkup } from './start_page_render';
+import getTotalPages from './get_total_pages';
 import { getCountriesFromEvents } from './filter_country';
 import { suppCountries } from './all_supp_countries';
 import { pagesVerification } from './pages_verification';
@@ -9,7 +9,7 @@ import {
   getAnimationEventSearch,
   removeListHidden,
   removeDiv,
-} from './info-anim';
+} from './info_anim';
 
 import debounce from 'lodash.debounce';
 

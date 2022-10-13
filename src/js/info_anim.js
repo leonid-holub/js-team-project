@@ -1,4 +1,4 @@
-import getTotalPages from '../js/get_total_pages';
+import getTotalPages from './get_total_pages';
 
 export function getAnimation(resp, elemDiv, elemList, elemBox, fromQuery) {
   if (resp.hasOwnProperty('_embedded') === false) {

@@ -1,5 +1,5 @@
 import { FetchService } from './base_fetch';
-import { getStartPageMarkup } from './start_page-render';
+import { getStartPageMarkup } from './start_page_render';
 
 const fetchFromAPI = new FetchService();
 const inputValue = document.querySelector('[data-input-search]');

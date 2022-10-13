@@ -1,7 +1,7 @@
-import { onSearchFildChange } from './logic-searchQuery';
+import { onSearchFildChange } from './logic_search_query';
 import { FetchService } from './base_fetch';
-import { getAnimation, removeListHidden, removeDiv } from './info-anim';
-import { getStartPageMarkup } from './start_page-render';
+import { getAnimation, removeListHidden, removeDiv } from './info_anim';
+import { getStartPageMarkup } from './start_page_render';
 import getTotalPages from '../js/get_total_pages';
 import { pagesVerification } from './pages_verification';
 import { getCountriesFromEvents } from './filter_country';

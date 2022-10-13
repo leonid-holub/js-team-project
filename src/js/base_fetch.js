@@ -18,17 +18,9 @@ export class FetchService {
   baseFetch = async function () {
     try {
       const response = await axios.get(this.BASE_URL, this.config);
-      // console.log(response);
-      // console.log(response.data._embedded.events);
       return response.data;
     } catch {
-      error => {
-        console.log(error);
-      };
+      error => {};
     }
   };
 }
-
-// const fetchService = new FetchService();
-
-// fetchService.baseFetch();

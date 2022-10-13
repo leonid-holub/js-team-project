@@ -1,6 +1,6 @@
 import { FetchService } from './base_fetch';
-import { startModalAnimation } from './animation-modal';
-import { closeModalAnimation } from './animation-modal';
+import { startModalAnimation } from './animation_modal';
+import { closeModalAnimation } from './animation_modal';
 
 const refs = {
   pricesBox: document.querySelector('.modal__prices'),
@@ -169,9 +169,7 @@ export function onCardModalOpen(ev) {
 
       if (allEvents === null || allEvents.length === 0) {
         localStorage.setItem('Event', JSON.stringify(objEvent));
-        console.log('hay');
         if (addToLocalStorage.hasAttribute('disabled')) {
-          console.log(addToLocalStorage.hasAttribute('disabled'));
           localStorage.setItem('Event', JSON.stringify(objEvent));
           addToLocalStorage.removeAttribute('disabled');
         } else {
@@ -184,7 +182,6 @@ export function onCardModalOpen(ev) {
             allEvents[i].dataEvents === wholeInfo.dates.start.localDate &&
             allEvents[i].city === wholeInfo._embedded.venues[0].city.name
           ) {
-            console.log('Fix');
             return addToLocalStorage.setAttribute('disabled', 'disabled');
           } else if (addToLocalStorage.hasAttribute('disabled')) {
             localStorage.setItem('Event', JSON.stringify(objEvent));
