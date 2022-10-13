@@ -35,7 +35,6 @@ function onCloseModalBasket() {
   modalFavorites.classList.add('is-hidden');
 }
 
-<<<<<<< HEAD
 modalFavorites.addEventListener('click', closeModalFavBack);
 function closeModalFavBack(ev) {
   if (ev.target === modalFavorites) {
@@ -52,10 +51,7 @@ function closeModalFavKey(ev) {
   }
 }
 
-function onAddToFavorites() {
-=======
 function onAddToFavorites(e) {
->>>>>>> dev
   saveBasketOnLocalStorage();
   e.currentTarget.setAttribute('disabled', 'disabled');
 }
