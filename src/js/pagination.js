@@ -23,11 +23,12 @@ function onBtnClick(e) {
   e.preventDefault();
   btnValue = Number(e.target.textContent);
 
-  smoothScroll();
   if (!e.target.hasAttribute('btn-pagination')) {
     return;
   }
   paginationFetch(btnValue);
+  smoothScroll();
+
   removeIsActive();
   if (pageBtns.length <= 4) {
     return addIsActive();
