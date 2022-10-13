@@ -64,9 +64,9 @@
 
 .burger-container {
   position: absolute;
-  top: 60px;
-  right: 20px;
-  display: inline-flex;
+  top: 52px;
+  right: calc(8% / 2);
+  padding: 25px;
   width: 92%;
   min-height: 80px;
   background: linear-gradient(
@@ -76,7 +76,7 @@
   );
   backdrop-filter: blur(15px);
 
-  border-radius: 50px;
+  border-radius: 50px 0px;
   opacity: 1;
   transform: scale(1);
 
@@ -88,4 +88,33 @@
   transform: scale(0.1);
   visibility: hidden;
   transition: all 0.35s ease;
+}
+
+.burger__btn {
+  margin: 0 auto;
+  display: block;
+
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: none;
+  text-shadow: 1px 1px 1px $accent-txt-color;
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+  
+  &:active {
+    color: $main-text-color;
+  }
+}
+
+.burger__btn-fav {
+  display: flex;
+  align-items: center;
+}
+
+.burger__btn-fav-icon {
+  fill: currentColor;
+  margin-right: 5px;
 }

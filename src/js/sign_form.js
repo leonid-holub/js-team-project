@@ -1,5 +1,5 @@
 const refs = {
-  openLogformBtn: document.querySelector('[data-signform-open]'),
+  openLogformBtn: document.querySelectorAll('[data-signform-open]'),
   closeLogformBtn: document.querySelector('[data-signform-close]'),
   logformWimdow: document.querySelector('[data-signform]'),
   logform: document.querySelector('.signform'),
@@ -12,9 +12,8 @@ function onSubmit(ev) {
   refs.logformWimdow.classList.add('is-hidden');
 }
 
-refs.openLogformBtn.addEventListener('click', openForm);
-function openForm(ev) {
-    ev.preventDefault();
+refs.openLogformBtn.forEach(btn => btn.addEventListener('click', openForm));
+function openForm() {
     refs.logformWimdow.classList.remove('is-hidden');
 }
 
