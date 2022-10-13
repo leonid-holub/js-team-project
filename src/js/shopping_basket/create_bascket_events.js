@@ -14,7 +14,7 @@ export function createBasketEvents() {
         <li class="modal-favorites__info-events-elem">${obj.country}</li>
         <li class="modal-favorites__info-events-elem">${obj.city}</li>
         <li class="modal-favorites__info-events-elem" data-basket-price>${obj.dataEvents}</li>
-        <li class="modal-favorites__info-events-elem"><a class="modal-favorites__info-link" href="${obj.urlBuyTicket}">BUY TICKET</a></li>
+        <li class="modal-favorites__info-events-elem"><a class="modal-favorites__info-link" href="${obj.urlBuyTicket}" target="_blank" target="_blank" rel="noreferrer noopener">BUY TICKET</a></li>
         <li class="modal-favorites__info-events-elem"><button class="modal-favorites__btn-del" data="${index}" data-favorites-delete>${binIcon}</button></li>
       </ul>`
       )
