@@ -1,0 +1,288 @@
+@keyframes cardsAppearanse {
+  0% {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes cardsHidden {
+  0% {
+    transform: translateY(0);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(-15px);
+      opacity: 1;
+    }
+  }
+
+
+.gallery {
+  background-color: $section-bckg-color;
+
+  background-image: url(../images/icons/gallery-img/noise-body.svg);
+  background-size: auto;
+  background-position: center;
+  margin-top: -76px;
+}
+
+.cards {
+  min-height: 100vh;
+  margin-bottom: 60px;
+  padding-bottom: 160px;
+  background-image: url(../images/icons/gallery-img/bgc-body.svg);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cards__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+
+  row-gap: 41px;
+  column-gap: 20px;
+
+  @media screen and (max-width: 767px) {
+    width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    row-gap: 40px;
+    column-gap: 32px;
+  }
+}
+
+.cards__list--hidden {
+  animation-name: cardsHidden;
+  animation-duration: 1500ms;
+  display: none;
+}
+
+.cards__item {
+  position: relative;
+
+  flex-basis: calc((100% - 24px) / 2);
+  min-height: 208px;
+
+  @media screen and (min-width: 768px) {
+    flex-basis: calc((100% - 96px) / 4);
+    min-height: 223px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    min-height: 300px;
+  }
+  animation-name: cardsAppearanse;
+  animation-duration: 1500ms;
+}
+
+.cards__link {
+  display: block;
+
+  text-decoration: none;
+  color: inherit;
+
+  margin-bottom: 4px;
+  cursor: pointer;
+
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 8px;
+  }
+
+  &:hover .cards__img,
+  &:focus .cards__img {
+    transform: scale(1.1);
+  }
+
+  &:hover .cards__title,
+  &:focus .cards__title {
+    color: $main-text-color;
+    text-shadow: 1px 1px 3px $accent-txt-color;
+  }
+}
+
+.cards__item::before {
+  content: '';
+  display: block;
+  position: relative;
+
+  width: 102px;
+  height: 95px;
+
+  left: 28px;
+  margin-bottom: 42px;
+
+  border: 1px solid $border-color;
+  border-radius: 50px 0px;
+
+  @media screen and (min-width: 768px) {
+    left: 32px;
+    width: 120px;
+    height: 112px;
+
+    margin-bottom: 34px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    left: 61px;
+    width: 227px;
+    height: 213px;
+
+    margin-bottom: 35px;
+  }
+}
+
+.cards__img {
+  position: absolute;
+  overflow: hidden;
+  object-fit: cover;
+  top: 9px;
+  right: 10px;
+
+  min-width: 120px;
+  min-height: 120px;
+
+  background-color: beige;
+  border-radius: 50px 0px;
+
+  @media screen and (min-width: 768px) {
+    min-width: 141px;
+    min-height: 120px;
+
+    top: 10px;
+    right: 11px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    min-width: 267px;
+    min-height: 220px;
+
+    top: 19px;
+    right: 21px;
+  }
+
+  transition: transform $anim;
+}
+
+.cards__title {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.21;
+
+  text-align: center;
+
+  color: $accent-txt-color;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  transition: color $anim;
+}
+
+.cards__date {
+  margin-bottom: 4px;
+
+  font-size: 14px;
+  line-height: 1.21;
+
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 8px;
+
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+.cards__address {
+  display: block;
+
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.25;
+
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    color: $accent-txt-color;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}
+
+.cards__icon-location {
+  width: 8px;
+  height: 10px;
+}
+
+.cards__address--missing {
+  display: block;
+  text-align: center;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 220px;
+  min-height: 50px;
+
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 15px;
+
+  background-color: rgba(236, 113, 215, 0.641);
+
+  box-shadow: 1px 1px 5px 4px $accent-txt-color, 1px 1px 5px 3px $main-text-color;
+
+  border-radius: 50px 0px;
+
+  text-align: center;
+  font-size: 12px;
+  line-height: 18px;
+
+
+  animation-name: cardsAppearanse;
+  animation-duration: 1500ms;
+
+  @media screen and (min-width: 768px) {
+    width: 350px;
+    min-height: 80px;
+    font-size: 16px;
+    line-height: 25px;
+
+    box-shadow: 1px 1px 7px 5px $accent-txt-color, 1px 1px 7px 4px $main-text-color;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 500px;
+    min-height: 100px;
+    font-size: 20px;
+    line-height: 35px;
+
+    box-shadow: 1px 1px 9px 6px $accent-txt-color, 1px 1px 12px 5px $main-text-color;
+  }
+}

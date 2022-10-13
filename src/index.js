@@ -1,0 +1,15 @@
+import './js/base_fetch.js';
+import './js/all_supp_countries.js';
+import './js/datalist_countries.js';
+import './js/start_page_render';
+import './js/logic_search_query';
+import './js/sign_form';
+import './js/log_form';
+import './js/modal';
+import './js/more_from_this_autor';
+import './js/pagination';
+import './js/filter_country';
+import './js/animation_modal';
+import './js/shopping_basket/modal_shopping_basket';
+import './js/burger_menu';
+import './js/reset_countries';

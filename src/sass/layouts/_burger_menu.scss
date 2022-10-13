@@ -1,0 +1,120 @@
+.menu {
+  margin-left: auto;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  background-color: transparent;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.burger-icon {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: $accent-txt-color;
+  border-radius: 1.35px;
+  transition: all 0.35s ease;
+}
+
+.burger-icon::before,
+.burger-icon::after {
+  content: '';
+  position: absolute;
+  left: 2.5px;
+  width: 25px;
+  height: 3px;
+  background-color: $accent-txt-color;
+  border-radius: 1.35px;
+  transition: all 0.7s ease;
+  transform: translateX(-11.5px);
+}
+
+.burger-icon::before {
+  transform: translateY(-6.4px);
+}
+
+.burger-icon::after {
+  transform: translateY(6.4px);
+}
+
+.menu.active .burger-icon {
+  background-color: transparent;
+}
+
+.menu.active .burger-icon::before {
+  transform: rotate(45deg);
+  background-color: #e2d6e0;
+}
+
+.menu.active .burger-icon::after {
+  transform: rotate(-45deg);
+  background-color: #e2d6e0;
+}
+
+.burger-container {
+  position: absolute;
+  top: 52px;
+  right: calc(8% / 2);
+  padding: 25px;
+  width: 92%;
+  min-height: 80px;
+  background: linear-gradient(
+    136.07deg,
+    rgba(196, 196, 196, 0.03) 10.75%,
+    rgba(196, 196, 196, 0) 92.33%
+  );
+  backdrop-filter: blur(15px);
+
+  border-radius: 50px 0px;
+  opacity: 1;
+  transform: scale(1);
+
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.burger-container-is-hidden {
+  opacity: 0.1;
+  transform: scale(0.1);
+  visibility: hidden;
+  transition: all 0.35s ease;
+}
+
+.burger__btn {
+  margin: 0 auto;
+  display: block;
+
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: none;
+  text-shadow: 1px 1px 1px $accent-txt-color;
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
+  &:active {
+    color: $main-text-color;
+  }
+}
+
+.burger__btn-fav {
+  display: flex;
+  align-items: center;
+}
+
+.burger__btn-fav-icon {
+  fill: currentColor;
+  margin-right: 5px;
+}

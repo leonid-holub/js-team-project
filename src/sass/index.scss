@@ -1,2 +1,13 @@
-@import './common';
-@import './example';
+@import './base/common';
+@import './base/reset';
+@import './utils/variables';
+@import './base/base';
+@import './layouts/header';
+@import './layouts/form';
+@import './layouts/gallery';
+@import './layouts/footer';
+@import './layouts/modal';
+@import './layouts/modal_favorites';
+@import './layouts/pagination';
+@import './layouts/animation_modal.scss';
+@import './layouts/burger_menu';
