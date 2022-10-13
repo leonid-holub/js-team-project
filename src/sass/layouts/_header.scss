@@ -133,7 +133,7 @@
     }
   }
   &__input {
-    color: $placeholder-txt-color;
+    color: $main-text-color;
     padding-left: 32px;
     height: 40px;
     backdrop-filter: blur(10px);
@@ -155,7 +155,6 @@
 
     &::placeholder {
       color: $placeholder-txt-color;
-
       font-size: 16px;
       line-height: 20px;
     }
@@ -333,7 +332,7 @@
   flex-direction: column;
   right: 30px;
   gap: 8px;
-  
+
   @media screen and (max-width: 767px) {
     display: none;
   }
@@ -366,7 +365,8 @@
 
 .header__btn-log {
   background-color: transparent;
-  transition: box-shadow $anim, color $anim, border-color $anim, text-shadow $anim;
+  transition: box-shadow $anim, color $anim, border-color $anim,
+    text-shadow $anim;
   &:hover,
   &:focus {
     color: $main-text-color;
@@ -378,7 +378,8 @@
 
 .header__btn-sign {
   background-color: rgba(255, 255, 255, 0.85);
-  transition: box-shadow $anim, color $anim, background-color $anim, text-shadow $anim; 
+  transition: box-shadow $anim, color $anim, background-color $anim,
+    text-shadow $anim;
   &:hover,
   &:focus {
     color: $main-text-color;
