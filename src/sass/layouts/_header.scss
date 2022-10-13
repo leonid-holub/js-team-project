@@ -5,13 +5,11 @@
 .header-container {
   display: flex;
   flex-direction: column;
-  
 
   @media screen and (max-width: 767px) {
     margin-top: -10px;
     margin-left: auto;
     margin-right: auto;
-    
   }
 
   @media screen and (min-width: 768px) {
@@ -21,7 +19,6 @@
 
   @media screen and (min-width: 1280px) {
     margin-top: -155px;
-    
   }
 }
 .header {
@@ -119,7 +116,6 @@
       margin-top: 24px;
       flex-direction: column;
       width: 280px;
-      
     }
     @media screen and (min-width: 768px) {
       gap: 32px;
@@ -217,9 +213,9 @@
         rgba(11, 11, 11, 0.5)
       ),
       url('/src/images/header-pic/pic320.jpg');
-      width: 320px;
-      margin-left: auto;
-      margin-right: auto;
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
     background-size: cover;
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -430,4 +426,8 @@
     width: 20px;
     height: 20px;
   }
+}
+
+.btn-close-position {
+  position: relative;
 }
