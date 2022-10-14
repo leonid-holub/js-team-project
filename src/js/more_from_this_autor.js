@@ -5,6 +5,7 @@ import { pagesVerification } from './pages_verification';
 import getTotalPages from '../js/get_total_pages';
 import { suppCountries } from './all_supp_countries';
 import { getAnimation, removeListHidden, removeDiv } from './info_anim';
+import { getCountriesFromEvents } from './filter_country';
 
 const refs = {
   moreFromThisAutorBtn: document.querySelector('.modal__btn-more'),
