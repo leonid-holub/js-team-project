@@ -72,31 +72,37 @@ export function onCardModalOpen(ev) {
       }
 
       let datePlaceHolder = '';
-      if (wholeInfo.dates.start.localTime === undefined) {
-        datePlaceHolder = ` `;
-      } else if (
-        wholeInfo.dates.start.localTime !== undefined &&
-        wholeInfo.dates.timezone === undefined
-      ) {
-        datePlaceHolder = `${wholeInfo.dates.start.localTime.slice(0, 5)}`;
-      } else {
-        datePlaceHolder = `${wholeInfo.dates.start.localTime.slice(0, 5)} (${
-          wholeInfo.dates.timezone
-        })`;
+      if (wholeInfo.dates) {
+        if (wholeInfo.dates.start.localTime === undefined) {
+          datePlaceHolder = ` `;
+        } else if (
+          wholeInfo.dates.start.localTime !== undefined &&
+          wholeInfo.dates.timezone === undefined
+        ) {
+          datePlaceHolder = `${wholeInfo.dates.start.localTime.slice(0, 5)}`;
+        } else {
+          datePlaceHolder = `${wholeInfo.dates.start.localTime.slice(0, 5)} (${
+            wholeInfo.dates.timezone
+          })`;
+        }
       }
 
       let pricesList = [];
+      let whoValue;
       if (wholeInfo._embedded.attractions === undefined) {
-        refs.imageS.setAttribute('src', `${imagesSortByWidth[0].url}`);
-        refs.imageL.setAttribute('src', `${imagesSortByWidth[0].url}`);
-        const emptyModalMarkup = `<div class="modal__text-three"><div class="modal__text-two">
-      <div class="modal__text-block">
-        <h3 class="modal__title">Info</h3>
-        <p class="modal__text modal__info">${infoPlaceHolder}</p>
-      </div>`;
-        refs.floatText.insertAdjacentHTML('afterbegin', emptyModalMarkup);
-        document.querySelector('.modal__btn').classList.add('is-hidden');
-        return;
+        //   refs.imageS.setAttribute('src', `${imagesSortByWidth[0].url}`);
+        //   refs.imageL.setAttribute('src', `${imagesSortByWidth[0].url}`);
+        //   const emptyModalMarkup = `<div class="modal__text-three"><div class="modal__text-two">
+        // <div class="modal__text-block">
+        //   <h3 class="modal__title">Info</h3>
+        //   <p class="modal__text modal__info">${infoPlaceHolder}</p>
+        // </div>`;
+        //   refs.floatText.insertAdjacentHTML('afterbegin', emptyModalMarkup);
+        //   document.querySelector('.modal__btn').classList.add('is-hidden');
+        //   return;
+        whoValue = wholeInfo.name;
+      } else {
+        whoValue = wholeInfo._embedded.attractions[0].name;
       }
       if (wholeInfo.priceRanges !== undefined) {
         for (let i = 0; i < wholeInfo.priceRanges.length; i++) {
@@ -120,6 +126,7 @@ export function onCardModalOpen(ev) {
       document.querySelector('.modal__btn').classList.remove('is-hidden');
       refs.imageS.setAttribute('src', `${imagesSortByWidth[0].url}`);
       refs.imageL.setAttribute('src', `${imagesSortByWidth[0].url}`);
+
       const markup = `<div class="modal__text-three"><div class="modal__text-two">
       <div class="modal__text-block">
         <h3 class="modal__title">Info</h3>
@@ -141,9 +148,7 @@ export function onCardModalOpen(ev) {
       </div>
       <div class="modal__text-block">
         <h3 class="modal__title">Who</h3>
-        <p class="modal__text author-name-js">${
-          wholeInfo._embedded.attractions[0].name
-        }</p>
+        <p class="modal__text author-name-js">${whoValue}</p>
       </div>
       <div class="modal__prices-block">
         <h3 class="modal__title">Prices</h3>
@@ -153,14 +158,26 @@ export function onCardModalOpen(ev) {
         </div>`;
 
       refs.floatText.insertAdjacentHTML('afterbegin', markup);
-      const objEvent = {
-        imgEvent: wholeInfo.images[4].url,
-        name: wholeInfo._embedded.attractions[0].name,
-        country: wholeInfo._embedded.venues[0].country.name,
-        city: wholeInfo._embedded.venues[0].city.name,
-        urlBuyTicket: wholeInfo.url,
-        dataEvents: wholeInfo.dates.start.localDate,
-      };
+      let objEvent;
+      if (wholeInfo._embedded.attractions === undefined) {
+        objEvent = {
+          imgEvent: wholeInfo.images[4].url,
+          name: wholeInfo.name,
+          country: wholeInfo._embedded.venues[0].country.name,
+          city: wholeInfo._embedded.venues[0].city.name,
+          urlBuyTicket: wholeInfo.url,
+          dataEvents: wholeInfo.dates.start.localDate,
+        };
+      } else {
+        objEvent = {
+          imgEvent: wholeInfo.images[4].url,
+          name: wholeInfo._embedded.attractions[0].name,
+          country: wholeInfo._embedded.venues[0].country.name,
+          city: wholeInfo._embedded.venues[0].city.name,
+          urlBuyTicket: wholeInfo.url,
+          dataEvents: wholeInfo.dates.start.localDate,
+        };
+      }
 
       const allEvents = JSON.parse(localStorage.getItem('Events'));
       const addToLocalStorage = document.querySelector(
@@ -177,17 +194,32 @@ export function onCardModalOpen(ev) {
         }
       } else {
         for (let i = 0; i <= allEvents.length; i += 1) {
-          if (
-            allEvents[i].name === wholeInfo._embedded.attractions[0].name &&
-            allEvents[i].dataEvents === wholeInfo.dates.start.localDate &&
-            allEvents[i].city === wholeInfo._embedded.venues[0].city.name
-          ) {
-            return addToLocalStorage.setAttribute('disabled', 'disabled');
-          } else if (addToLocalStorage.hasAttribute('disabled')) {
-            localStorage.setItem('Event', JSON.stringify(objEvent));
-            return addToLocalStorage.removeAttribute('disabled');
+          if (wholeInfo._embedded.attractions === undefined) {
+            if (
+              allEvents[i].name === wholeInfo.name &&
+              allEvents[i].dataEvents === wholeInfo.dates.start.localDate &&
+              allEvents[i].city === wholeInfo._embedded.venues[0].city.name
+            ) {
+              return addToLocalStorage.setAttribute('disabled', 'disabled');
+            } else if (addToLocalStorage.hasAttribute('disabled')) {
+              localStorage.setItem('Event', JSON.stringify(objEvent));
+              return addToLocalStorage.removeAttribute('disabled');
+            } else {
+              localStorage.setItem('Event', JSON.stringify(objEvent));
+            }
           } else {
-            localStorage.setItem('Event', JSON.stringify(objEvent));
+            if (
+              allEvents[i].name === wholeInfo._embedded.attractions[0].name &&
+              allEvents[i].dataEvents === wholeInfo.dates.start.localDate &&
+              allEvents[i].city === wholeInfo._embedded.venues[0].city.name
+            ) {
+              return addToLocalStorage.setAttribute('disabled', 'disabled');
+            } else if (addToLocalStorage.hasAttribute('disabled')) {
+              localStorage.setItem('Event', JSON.stringify(objEvent));
+              return addToLocalStorage.removeAttribute('disabled');
+            } else {
+              localStorage.setItem('Event', JSON.stringify(objEvent));
+            }
           }
         }
       }

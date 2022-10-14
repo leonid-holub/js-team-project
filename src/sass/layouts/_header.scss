@@ -374,6 +374,7 @@
 }
 
 .header__btn-log {
+  display: none;
   background-color: transparent;
   transition: box-shadow $anim, color $anim, border-color $anim,
     text-shadow $anim;
@@ -387,6 +388,7 @@
 }
 
 .header__btn-sign {
+  display: none;
   background-color: rgba(255, 255, 255, 0.85);
   transition: box-shadow $anim, color $anim, background-color $anim,
     text-shadow $anim;
@@ -400,6 +402,7 @@
 }
 
 .header__btn-fav {
+  height: 40px;
   width: 45px;
   background-color: $accent-txt-color;
   padding: 0;
@@ -407,8 +410,8 @@
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 40px;
     padding: 4px 0;
-    position: absolute;
-    right: 105px;
+    // position: absolute;
+    // right: 105px;
   }
 
   color: $section-bckg-color;
