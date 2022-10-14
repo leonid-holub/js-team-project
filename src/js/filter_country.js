@@ -118,11 +118,11 @@ function onFormChange(e) {
     valueFromCountry = searchFromCountry.value;
   }
 
-  // if (valueFromEvent !== '') {
-  //   removeDiv(info);
-  // }
+  if (valueFromEvent !== '') {
+    removeDiv(info);
+  }
 
-  // if (valueFromCountry !== '') {
-  //   removeDiv(info);
-  // }
+  if (valueFromCountry !== '') {
+    removeDiv(info);
+  }
 }
