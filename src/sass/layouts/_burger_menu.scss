@@ -64,11 +64,12 @@
 
 .burger-container {
   position: absolute;
-  top: 52px;
-  right: calc(8% / 2);
+  top: 55px;
+  right: 25px;
+  display: flex;
   padding: 25px;
-  width: 92%;
-  min-height: 80px;
+  width: 260px;
+  min-height: 85px;
   background: linear-gradient(
     136.07deg,
     rgba(196, 196, 196, 0.03) 10.75%,
@@ -91,7 +92,7 @@
 }
 
 .burger__btn {
-  margin: 0 auto;
+  margin: auto;
   display: block;
 
   font-size: 18px;
@@ -100,9 +101,6 @@
   background-color: transparent;
   border: none;
   text-shadow: 1px 1px 1px $accent-txt-color;
-  &:not(:last-child) {
-    margin-bottom: 15px;
-  }
 
   &:active {
     color: $main-text-color;
