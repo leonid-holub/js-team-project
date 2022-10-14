@@ -21,8 +21,7 @@ export function createBasketEvents() {
       .join('');
     favoritesEvents.innerHTML = newEvent;
   } else {
-    const withoutEvents =
-      '<p class="modal__favorites--clear">You currently have no favorite events</p>';
+    const withoutEvents = `<p class="modal__favorites--clear">You don't have favorite events now.</p>`;
     favoritesEvents.innerHTML = withoutEvents;
   }
 }
